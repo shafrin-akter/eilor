@@ -1,0 +1,50 @@
+{% comment %}
+  Renders a free-shipping progress bar.
+
+  Usage:
+    {% render 'free-shipping-bar', threshold: settings.free_shipping_threshold %}
+
+  Reads settings.free_shipping_threshold (in cents) when `threshold` is not provided.
+{% endcomment %}
+
+{%- liquid
+  assign threshold_cents = threshold | default: settings.free_shipping_threshold | default: 5000
+  assign threshold_cents = threshold_cents | plus: 0
+  if threshold_cents <= 0
+    assign threshold_cents = 5000
+  endif
+  assign remaining = threshold_cents | minus: cart.total_price
+  if remaining < 0
+    assign remaining = 0
+  endif
+  assign percent = cart.total_price | times: 100.0 | divided_by: threshold_cents
+  if percent > 100
+    assign percent = 100
+  endif
+  assign reached = false
+  if cart.total_price >= threshold_cents
+    assign reached = true
+  endif
+-%}
+
+<free-shipping-bar
+  class="free-shipping-bar{% if reached %} is-reached{% endif %}"
+  data-threshold="{{ threshold_cents }}"
+>
+  <p class="free-shipping-bar__text" data-shipping-text>
+    {%- if reached -%}
+      🎉 You've unlocked <strong>FREE shipping!</strong>
+    {%- else -%}
+      Spend <strong data-shipping-remaining>{{ remaining | money_without_trailing_zeros }}</strong> more for <strong>FREE shipping</strong>
+    {%- endif -%}
+  </p>
+  <div
+    class="free-shipping-bar__track"
+    role="progressbar"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="{{ percent | round }}"
+  >
+    <div class="free-shipping-bar__fill" data-shipping-fill style="width: {{ percent }}%;"></div>
+  </div>
+</free-shipping-bar>

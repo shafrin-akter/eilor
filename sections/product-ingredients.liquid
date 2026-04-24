@@ -1,0 +1,101 @@
+{{ 'custom-dtc.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign ingredients = product.metafields.custom.ingredients.value
+  assign key_ingredients = product.metafields.custom.key_ingredients.value
+  assign full_text = product.metafields.custom.full_ingredients
+-%}
+
+<section
+  class="product-ingredients color-{{ section.settings.color_scheme }} gradient"
+  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="product-ingredients__header">
+        {%- if section.settings.subheading != blank -%}
+          <p class="product-ingredients__subheading">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+        <h2 class="product-ingredients__heading {{ section.settings.heading_size }}">
+          {{ section.settings.heading | escape }}
+        </h2>
+      </div>
+    {%- endif -%}
+
+    {%- if key_ingredients != blank -%}
+      <ul class="product-ingredients__grid" role="list">
+        {%- for item in key_ingredients -%}
+          <li class="ingredient-card">
+            {%- if item.image != blank -%}
+              {{
+                item.image
+                | image_url: width: 320
+                | image_tag:
+                  loading: 'lazy',
+                  width: 160,
+                  height: 160,
+                  class: 'ingredient-card__image',
+                  alt: item.name
+              }}
+            {%- endif -%}
+            <h3 class="ingredient-card__name">{{ item.name | escape }}</h3>
+            {%- if item.benefit != blank -%}
+              <p class="ingredient-card__benefit">{{ item.benefit | escape }}</p>
+            {%- endif -%}
+            {%- if item.description != blank -%}
+              <p class="ingredient-card__description">{{ item.description }}</p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- elsif ingredients != blank -%}
+      <ul class="product-ingredients__tag-list" role="list">
+        {%- for ing in ingredients -%}
+          <li class="product-ingredients__tag">{{ ing | escape }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if full_text != blank -%}
+      <details class="product-ingredients__full">
+        <summary>{{ section.settings.full_label | default: 'See full ingredient list' }}</summary>
+        <div class="product-ingredients__full-text rte">{{ full_text }}</div>
+      </details>
+    {%- endif -%}
+
+    {%- if key_ingredients == blank and ingredients == blank and full_text == blank -%}
+      <div class="product-ingredients__empty">
+        <p>Add ingredients via the product metafields <code>custom.key_ingredients</code>, <code>custom.ingredients</code>, or <code>custom.full_ingredients</code>.</p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product ingredients",
+  "tag": "section",
+  "class": "section-product-ingredients",
+  "settings": [
+    { "type": "paragraph", "content": "Renders from product metafields:\ncustom.key_ingredients (list.metaobject – fields: name, benefit, description, image)\ncustom.ingredients (list.single_line_text_field)\ncustom.full_ingredients (rich_text_field)" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Clean formula" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Key ingredients" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h1", "label": "Large" },
+        { "value": "h2", "label": "Medium" },
+        { "value": "h3", "label": "Small" }
+      ],
+      "default": "h2"
+    },
+    { "type": "text", "id": "full_label", "label": "Full list toggle label", "default": "See full ingredient list" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "presets": [{ "name": "Product ingredients" }]
+}
+{% endschema %}

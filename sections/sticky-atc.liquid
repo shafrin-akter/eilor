@@ -1,0 +1,16 @@
+{%- if product -%}
+  {% render 'sticky-atc', product: product, section_id: section.id %}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Sticky add to cart",
+  "tag": "section",
+  "class": "section-sticky-atc",
+  "settings": [
+    { "type": "paragraph", "content": "Add this section to the product template. It displays a sticky bar at the bottom of the viewport after the main product form scrolls out of view." }
+  ],
+  "enabled_on": { "templates": ["product"] },
+  "presets": [{ "name": "Sticky add to cart" }]
+}
+{% endschema %}

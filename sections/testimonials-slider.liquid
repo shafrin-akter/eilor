@@ -1,0 +1,179 @@
+{{ 'custom-dtc.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="testimonials-slider color-{{ section.settings.color_scheme }} gradient"
+  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="testimonials-slider__header">
+        {%- if section.settings.subheading != blank -%}
+          <p class="testimonials-slider__subheading">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+        <h2 class="testimonials-slider__heading {{ section.settings.heading_size }}">
+          {{ section.settings.heading | escape }}
+        </h2>
+        {%- if section.settings.show_rating -%}
+          <div class="testimonials-slider__overall-rating" aria-label="Average rating {{ section.settings.rating_value }} out of 5">
+            <span class="testimonials-slider__stars" aria-hidden="true">
+              {%- assign rating = section.settings.rating_value | times: 1.0 -%}
+              {%- for i in (1..5) -%}
+                {%- if i <= rating -%}★{%- else -%}☆{%- endif -%}
+              {%- endfor -%}
+            </span>
+            <span class="testimonials-slider__rating-text">
+              {{ section.settings.rating_value }}/5 · {{ section.settings.review_count }} {{ section.settings.rating_label }}
+            </span>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <testimonials-slider
+        class="testimonials-slider__track"
+        data-autoplay="{{ section.settings.autoplay }}"
+        data-interval="{{ section.settings.autoplay_interval | times: 1000 }}"
+      >
+        <button
+          type="button"
+          class="testimonials-slider__arrow testimonials-slider__arrow--prev"
+          aria-label="Previous testimonial"
+          data-direction="prev"
+        >
+          <span aria-hidden="true">‹</span>
+        </button>
+
+        <ul class="testimonials-slider__list" role="list">
+          {%- for block in section.blocks -%}
+            <li
+              class="testimonials-slider__slide"
+              {{ block.shopify_attributes }}
+              data-index="{{ forloop.index0 }}"
+            >
+              <figure class="testimonial-card">
+                {%- if block.settings.rating > 0 -%}
+                  <div class="testimonial-card__rating" aria-label="{{ block.settings.rating }} out of 5">
+                    {%- for i in (1..5) -%}
+                      {%- if i <= block.settings.rating -%}★{%- else -%}☆{%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.quote != blank -%}
+                  <blockquote class="testimonial-card__quote">{{ block.settings.quote }}</blockquote>
+                {%- endif -%}
+                <figcaption class="testimonial-card__meta">
+                  {%- if block.settings.avatar != blank -%}
+                    {{
+                      block.settings.avatar
+                      | image_url: width: 120
+                      | image_tag:
+                        loading: 'lazy',
+                        width: 60,
+                        height: 60,
+                        class: 'testimonial-card__avatar',
+                        alt: block.settings.author
+                    }}
+                  {%- endif -%}
+                  <div>
+                    {%- if block.settings.author != blank -%}
+                      <p class="testimonial-card__author">{{ block.settings.author | escape }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.location != blank -%}
+                      <p class="testimonial-card__location">{{ block.settings.location | escape }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.verified -%}
+                      <p class="testimonial-card__verified">
+                        <span aria-hidden="true">✓</span> Verified Buyer
+                      </p>
+                    {%- endif -%}
+                  </div>
+                </figcaption>
+              </figure>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <button
+          type="button"
+          class="testimonials-slider__arrow testimonials-slider__arrow--next"
+          aria-label="Next testimonial"
+          data-direction="next"
+        >
+          <span aria-hidden="true">›</span>
+        </button>
+
+        <div class="testimonials-slider__dots" role="tablist">
+          {%- for block in section.blocks -%}
+            <button
+              type="button"
+              class="testimonials-slider__dot{% if forloop.first %} is-active{% endif %}"
+              role="tab"
+              aria-label="Go to testimonial {{ forloop.index }}"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              data-index="{{ forloop.index0 }}"
+            ></button>
+          {%- endfor -%}
+        </div>
+      </testimonials-slider>
+    {%- endif -%}
+  </div>
+</section>
+
+<script src="{{ 'testimonials-slider.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Testimonials slider",
+  "tag": "section",
+  "class": "section-testimonials",
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Loved by thousands" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What our customers say" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h1", "label": "Large" },
+        { "value": "h2", "label": "Medium" },
+        { "value": "h3", "label": "Small" }
+      ],
+      "default": "h2"
+    },
+    { "type": "header", "content": "Overall rating" },
+    { "type": "checkbox", "id": "show_rating", "label": "Show overall rating", "default": true },
+    { "type": "text", "id": "rating_value", "label": "Rating value", "default": "4.9" },
+    { "type": "text", "id": "review_count", "label": "Review count", "default": "2,480" },
+    { "type": "text", "id": "rating_label", "label": "Rating label", "default": "reviews" },
+    { "type": "header", "content": "Autoplay" },
+    { "type": "checkbox", "id": "autoplay", "label": "Enable autoplay", "default": true },
+    { "type": "range", "id": "autoplay_interval", "label": "Interval (sec)", "min": 3, "max": 12, "step": 1, "default": 6 },
+    { "type": "header", "content": "Appearance" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "range", "id": "rating", "label": "Star rating", "min": 0, "max": 5, "step": 1, "default": 5 },
+        { "type": "richtext", "id": "quote", "label": "Quote", "default": "<p>This product changed my routine. Real results in weeks — I won't go back.</p>" },
+        { "type": "text", "id": "author", "label": "Author", "default": "Sarah M." },
+        { "type": "text", "id": "location", "label": "Location", "default": "New York, NY" },
+        { "type": "image_picker", "id": "avatar", "label": "Avatar" },
+        { "type": "checkbox", "id": "verified", "label": "Show \"verified buyer\" badge", "default": true }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Testimonials slider",
+      "blocks": [{ "type": "testimonial" }, { "type": "testimonial" }, { "type": "testimonial" }]
+    }
+  ]
+}
+{% endschema %}

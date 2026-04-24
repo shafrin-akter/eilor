@@ -1,0 +1,89 @@
+{% comment %}
+  Renders a sticky Add to Cart bar that slides in after the main product form scrolls out of view.
+
+  Usage:
+    {% render 'sticky-atc', product: product, section_id: section.id %}
+{% endcomment %}
+
+{%- liquid
+  assign current = product.selected_or_first_available_variant
+  assign featured_image = current.featured_image | default: product.featured_image
+  assign has_variants = false
+  if product.variants.size > 1
+    assign has_variants = true
+  endif
+-%}
+
+<sticky-atc
+  class="sticky-atc"
+  data-section-id="{{ section_id }}"
+  data-product-url="{{ product.url }}"
+  hidden
+>
+  <div class="sticky-atc__inner page-width">
+    <div class="sticky-atc__product">
+      {%- if featured_image -%}
+        {{
+          featured_image
+          | image_url: width: 120
+          | image_tag:
+            loading: 'lazy',
+            width: 48,
+            height: 48,
+            class: 'sticky-atc__image',
+            alt: product.title
+        }}
+      {%- endif -%}
+      <div class="sticky-atc__info">
+        <p class="sticky-atc__title">{{ product.title | escape }}</p>
+        <p class="sticky-atc__price" data-sticky-price>
+          {%- if current.compare_at_price > current.price -%}
+            <span class="sticky-atc__price-sale">{{ current.price | money }}</span>
+            <s class="sticky-atc__price-compare">{{ current.compare_at_price | money }}</s>
+          {%- else -%}
+            {{ current.price | money }}
+          {%- endif -%}
+        </p>
+      </div>
+    </div>
+
+    <form
+      action="{{ routes.cart_add_url }}"
+      method="post"
+      enctype="multipart/form-data"
+      class="sticky-atc__form"
+      data-sticky-form
+    >
+      <input
+        type="hidden"
+        name="id"
+        value="{{ current.id }}"
+        data-sticky-variant-input
+      >
+      <input type="hidden" name="quantity" value="1">
+
+      {%- if has_variants -%}
+        <a href="{{ product.url }}" class="sticky-atc__button button button--primary">
+          <span data-sticky-cta>Choose options</span>
+        </a>
+      {%- else -%}
+        <button
+          type="submit"
+          class="sticky-atc__button button button--primary"
+          {% unless current.available %}disabled aria-disabled="true"{% endunless %}
+          data-sticky-submit
+        >
+          <span data-sticky-cta>
+            {%- if current.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </span>
+        </button>
+      {%- endif -%}
+    </form>
+  </div>
+</sticky-atc>
+
+<script src="{{ 'sticky-atc.js' | asset_url }}" defer></script>

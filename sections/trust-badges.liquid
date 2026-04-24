@@ -1,0 +1,106 @@
+{{ 'custom-dtc.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="trust-badges color-{{ section.settings.color_scheme }} gradient"
+  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="trust-badges__heading {{ section.settings.heading_size }}">
+        {{ section.settings.heading | escape }}
+      </h2>
+    {%- endif -%}
+    <ul
+      class="trust-badges__list"
+      style="--columns: {{ section.blocks.size | at_most: 6 }};"
+      role="list"
+    >
+      {%- for block in section.blocks -%}
+        <li class="trust-badge" {{ block.shopify_attributes }}>
+          <div class="trust-badge__icon" aria-hidden="true">
+            {%- case block.settings.icon -%}
+              {%- when 'padlock' -%}{{ 'icon-padlock.svg' | inline_asset_content }}
+              {%- when 'return' -%}{{ 'icon-return.svg' | inline_asset_content }}
+              {%- when 'truck' -%}{{ 'icon-truck.svg' | inline_asset_content }}
+              {%- when 'star' -%}{{ 'icon-star.svg' | inline_asset_content }}
+              {%- when 'leaf' -%}{{ 'icon-leaf.svg' | inline_asset_content }}
+              {%- when 'heart' -%}{{ 'icon-heart.svg' | inline_asset_content }}
+              {%- when 'check' -%}{{ 'icon-check-mark.svg' | inline_asset_content }}
+              {%- when 'chat' -%}{{ 'icon-chat-bubble.svg' | inline_asset_content }}
+            {%- endcase -%}
+          </div>
+          <div class="trust-badge__content">
+            {%- if block.settings.title != blank -%}
+              <p class="trust-badge__title">{{ block.settings.title | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="trust-badge__text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust badges",
+  "tag": "section",
+  "class": "section-trust-badges",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Medium" },
+        { "value": "h3", "label": "Small" }
+      ],
+      "default": "h3"
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20 }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "padlock", "label": "Secure" },
+            { "value": "return", "label": "Return" },
+            { "value": "truck", "label": "Shipping" },
+            { "value": "star", "label": "Star" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "check", "label": "Check" },
+            { "value": "chat", "label": "Chat" }
+          ],
+          "default": "check"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Free shipping" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Over $50" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Trust badges",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "truck", "title": "Free shipping", "text": "Over $50" } },
+        { "type": "badge", "settings": { "icon": "return", "title": "Easy returns", "text": "30 days" } },
+        { "type": "badge", "settings": { "icon": "padlock", "title": "Secure", "text": "SSL checkout" } },
+        { "type": "badge", "settings": { "icon": "chat", "title": "Support", "text": "24/7" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
