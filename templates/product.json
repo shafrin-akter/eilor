@@ -141,6 +141,15 @@
         "ggiZ9G0L8g6_text": "<p>No additives</p>"
       },
       "type": "gp-section-616714264660411040"
+    },
+    "gp_section_616720521253356225": {
+      "settings": {
+        "checksum": "f60e39a93a67914aa705edb273f575939fc0be24d084687ea3ab219705d91714_1_1_1_0__1",
+        "ggF7aa70NZZ_childItem_0": "Tab 1",
+        "ggF7aa70NZZ_childItem_1": "Tab 2",
+        "ggF7aa70NZZ_childItem_2": "Tab 3"
+      },
+      "type": "gp-section-616720521253356225"
     }
   },
   "order": [
@@ -148,6 +157,7 @@
     "gp_section_616688585352938144",
     "gp_section_616706376399324139",
     "gp_section_616713459907691499",
-    "gp_section_616714264660411040"
+    "gp_section_616714264660411040",
+    "gp_section_616720521253356225"
   ]
 }
