@@ -459,7 +459,7 @@
         "rating_value": "4.9",
         "review_count": "2,480",
         "rating_label": "reviews",
-        "autoplay": true,
+        "autoplay": false,
         "autoplay_interval": 6,
         "color_scheme": "scheme-2",
         "padding_top": 48,
