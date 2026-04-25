@@ -282,6 +282,7 @@
     },
     "ingredients": {
       "type": "product-ingredients",
+      "disabled": true,
       "settings": {
         "subheading": "Clean formula",
         "heading": "Key ingredients",
