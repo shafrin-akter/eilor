@@ -535,13 +535,14 @@
     },
     "upsell": {
       "type": "dynamic-upsell",
+      "disabled": true,
       "settings": {
         "subheading": "Complete your routine",
         "heading": "You might also love",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "intent": "complementary",
         "limit": 4,
-        "fallback_product": "",
+        "fallback_product": "eilor-hydrating-serum",
         "button_label": "Add to cart",
         "color_scheme": "scheme-2",
         "padding_top": 48,
