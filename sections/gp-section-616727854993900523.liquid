@@ -297,7 +297,7 @@
     
       <script id="custom-js-gIpsF3gCBi">
         try {
-           (function () {
+          (function () {
     var timeline = document.getElementById('timeline');
     var progress = document.getElementById('progress');
     var steps = Array.prototype.slice.call(timeline.querySelectorAll('.step'));
@@ -307,20 +307,27 @@
       var tlRect = timeline.getBoundingClientRect();
       var triggerY = window.innerHeight * 0.55;
       var lineTop = tlRect.top + 20;
+      var lineBottom = tlRect.bottom - 20;
 
       var lastActiveCenter = lineTop;
+      var lastActiveIndex = -1;
       steps.forEach(function (step, i) {
         var r = icons[i].getBoundingClientRect();
         var center = r.top + r.height / 2;
         if (center <= triggerY) {
           step.classList.add('active');
           lastActiveCenter = center;
+          lastActiveIndex = i;
         } else {
           step.classList.remove('active');
         }
       });
 
-      progress.style.height = (lastActiveCenter - lineTop) + 'px';
+      if (lastActiveIndex === steps.length - 1) {
+        progress.style.height = (lineBottom - lineTop) + 'px';
+      } else {
+        progress.style.height = (lastActiveCenter - lineTop) + 'px';
+      }
     }
 
     // capture phase + document = catches scroll from any scrollable ancestor too
