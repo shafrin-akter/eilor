@@ -193,7 +193,8 @@
         ".product-bundle__option-label {margin: 0; font-weight: 600; /* font-size: 2rem; */ font-size: 16px !important;}",
         ".product-bundle__subheading {font-size: 20px !important;}",
         ".product-bundle__option-description {font-size: 16px;}",
-        ".product-bundle__ribbon {font-size: 11px;}"
+        ".product-bundle__ribbon {font-size: 11px;}",
+        ".product-bundle__strike {font-size: 20px;}"
       ],
       "settings": {
         "product": "eilor-hydrating-serum",
