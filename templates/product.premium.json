@@ -32,6 +32,19 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "complementary_mwrE8z": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
+        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -57,7 +70,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "quantity_selector": {
@@ -80,7 +94,8 @@
           "settings": {
             "heading": "Key ingredients",
             "icon": "leaf",
-            "content": "<p>See the ingredients section below for details.</p>"
+            "content": "<p>See the ingredients section below for details.</p>",
+            "page": ""
           }
         },
         "tab_how_to_use": {
@@ -88,7 +103,8 @@
           "settings": {
             "heading": "How to use",
             "icon": "check_mark",
-            "content": "<p>Apply twice daily after cleansing.</p>"
+            "content": "<p>Apply twice daily after cleansing.</p>",
+            "page": ""
           }
         },
         "tab_shipping": {
@@ -96,7 +112,8 @@
           "settings": {
             "heading": "Shipping & returns",
             "icon": "truck",
-            "content": "<p>Free shipping on orders $50+. 30-day money-back guarantee.</p>"
+            "content": "<p>Free shipping on orders $50+. 30-day money-back guarantee.</p>",
+            "page": ""
           }
         },
         "share": {
@@ -107,6 +124,7 @@
         }
       },
       "block_order": [
+        "complementary_mwrE8z",
         "vendor",
         "title",
         "caption",
@@ -122,10 +140,14 @@
       ],
       "settings": {
         "enable_sticky_info": true,
+        "color_scheme": "",
         "media_size": "large",
         "constrain_to_viewport": true,
+        "media_fit": "contain",
         "gallery_layout": "thumbnail",
         "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 24,
@@ -141,7 +163,10 @@
             "label": "1 Pack",
             "description": "Try it out",
             "quantity": 1,
-            "discount_percent": 0
+            "discount_percent": 0,
+            "badge": "Bundler Offer",
+            "highlight": false,
+            "default": false
           }
         },
         "pack-2": {
@@ -152,6 +177,7 @@
             "quantity": 2,
             "discount_percent": 10,
             "badge": "Popular",
+            "highlight": false,
             "default": true
           }
         },
@@ -163,7 +189,8 @@
             "quantity": 3,
             "discount_percent": 20,
             "badge": "Best value",
-            "highlight": true
+            "highlight": true,
+            "default": false
           }
         }
       },
@@ -173,6 +200,7 @@
         "pack-3"
       ],
       "settings": {
+        "product": "",
         "heading": "Choose your bundle & save",
         "subheading": "The more you buy, the more you save",
         "heading_size": "h2",
@@ -264,13 +292,17 @@
         "col-2": {
           "type": "column",
           "settings": {
-            "name": "Competitor A"
+            "name": "Competitor A",
+            "highlight": false,
+            "badge": "Best"
           }
         },
         "col-3": {
           "type": "column",
           "settings": {
-            "name": "Competitor B"
+            "name": "Competitor B",
+            "highlight": false,
+            "badge": "Best"
           }
         },
         "row-1": {
@@ -279,7 +311,10 @@
             "feature": "Clinically tested",
             "col_1": "yes",
             "col_2": "no",
-            "col_3": "no"
+            "col_3": "no",
+            "col_4": "",
+            "col_5": "",
+            "col_6": ""
           }
         },
         "row-2": {
@@ -288,7 +323,10 @@
             "feature": "Vegan & cruelty-free",
             "col_1": "yes",
             "col_2": "yes",
-            "col_3": "no"
+            "col_3": "no",
+            "col_4": "",
+            "col_5": "",
+            "col_6": ""
           }
         },
         "row-3": {
@@ -297,7 +335,10 @@
             "feature": "Free shipping",
             "col_1": "yes",
             "col_2": "no",
-            "col_3": "no"
+            "col_3": "no",
+            "col_4": "",
+            "col_5": "",
+            "col_6": ""
           }
         },
         "row-4": {
@@ -306,7 +347,10 @@
             "feature": "30-day guarantee",
             "col_1": "yes",
             "col_2": "no",
-            "col_3": "yes"
+            "col_3": "yes",
+            "col_4": "",
+            "col_5": "",
+            "col_6": ""
           }
         },
         "row-5": {
@@ -315,7 +359,10 @@
             "feature": "Dermatologist approved",
             "col_1": "yes",
             "col_2": "no",
-            "col_3": "no"
+            "col_3": "no",
+            "col_4": "",
+            "col_5": "",
+            "col_6": ""
           }
         }
       },
@@ -407,21 +454,24 @@
           "type": "question",
           "settings": {
             "question": "Is it safe for sensitive skin?",
-            "answer": "<p>Yes — our formula is dermatologist-tested and fragrance-free.</p>"
+            "answer": "<p>Yes — our formula is dermatologist-tested and fragrance-free.</p>",
+            "open_by_default": false
           }
         },
         "q3": {
           "type": "question",
           "settings": {
             "question": "What's your return policy?",
-            "answer": "<p>30-day money-back guarantee on all orders, no questions asked.</p>"
+            "answer": "<p>30-day money-back guarantee on all orders, no questions asked.</p>",
+            "open_by_default": false
           }
         },
         "q4": {
           "type": "question",
           "settings": {
             "question": "Do you ship internationally?",
-            "answer": "<p>Yes, we ship to over 50 countries worldwide.</p>"
+            "answer": "<p>Yes, we ship to over 50 countries worldwide.</p>",
+            "open_by_default": false
           }
         }
       },
@@ -449,6 +499,7 @@
         "heading_size": "h2",
         "intent": "complementary",
         "limit": 4,
+        "fallback_product": "",
         "button_label": "Add to cart",
         "color_scheme": "scheme-2",
         "padding_top": 48,
@@ -498,6 +549,8 @@
         "b4"
       ],
       "settings": {
+        "heading": "",
+        "heading_size": "h3",
         "color_scheme": "scheme-2",
         "padding_top": 20,
         "padding_bottom": 20
