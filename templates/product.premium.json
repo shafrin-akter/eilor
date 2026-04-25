@@ -12,7 +12,7 @@
     "urgency": {
       "type": "urgency-bar",
       "custom_css": [
-        ".urgency-bar {display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 2rem; padding: .75rem 1rem; border-radius: var(--dtc-radius); font-size: 16px;}"
+        ".urgency-bar {font-size: 16px; color: white;}"
       ],
       "settings": {
         "show_low_stock": true,
