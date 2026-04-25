@@ -144,10 +144,12 @@
     },
     "gp_section_616720521253356225": {
       "settings": {
-        "checksum": "0040f8cd7e46f635de47a512b19bb6a02ba6f430cbabcb24b7e7568e5ce82dc9_1_1_1_0__1",
-        "ggN2jayCGvf_childItem_0": "<p><span style=\"background-color:rgba(255,255,255,0);color:rgb(46,42,57);\">Antioxidant Strength</span></p>",
-        "ggN2jayCGvf_childItem_1": "<p><span style=\"background-color:rgba(255,255,255,0.01);color:#000000;\">What&#039;s </span><span style=\"background-color:rgba(255,255,255,0);color:rgb(46,42,57);\">Inside</span></p>",
+        "checksum": "c3966708324b14bf5cb33372494215044be6730d23d8cd1dded44dfa89e9dd4f_1_1_1_0__1",
+        "gg9sVK5K2dO_text": "Your heading text goes here",
+        "ggN2jayCGvf_childItem_0": "<p><span style=\"background-color:rgba(255,255,255,0.01);color:#0A0000;\">What&#039;s </span><span style=\"background-color:rgba(255,255,255,0);color:#0A0000;\">Inside</span></p>",
+        "ggN2jayCGvf_childItem_1": "<p>Tab 3</p>",
         "ggN2jayCGvf_childItem_2": "<p>Tab 3</p>",
+        "ggbl5Ih_1CT_text": "<p>Astaxanthin is recognized as one of the most powerful antioxidants available. Research shows it is:</p>",
         "ggnMpnMEnbZ_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0824/3976/6260/files/5ce46524-3b42-41d9-a702-5bdb0d3589f8.jpg",
         "ggujSuAIR17_text": "<strong>Discover Why Experts Trust Rovina Astaxanthin</strong>"
       },
