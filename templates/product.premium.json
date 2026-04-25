@@ -588,6 +588,9 @@
         "b3",
         "b4"
       ],
+      "custom_css": [
+        ".trust-badge__text {font-size: 16px; color: black;}"
+      ],
       "settings": {
         "heading": "",
         "heading_size": "h3",
