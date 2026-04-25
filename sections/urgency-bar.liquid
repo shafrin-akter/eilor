@@ -22,7 +22,10 @@
         <div class="urgency-bar__item urgency-bar__item--stock">
           <span class="urgency-bar__dot" aria-hidden="true"></span>
           <span class="urgency-bar__text">
-            {{ section.settings.low_stock_text | replace: '[count]', inventory | default: 'Only a few left!' }}
+            {{ section.settings.low_stock_text
+              | replace: '[count]', inventory
+              | default: 'Only a few left!'
+            }}
           </span>
         </div>
       {%- elsif section.settings.show_mock_stock -%}
@@ -53,9 +56,7 @@
         >
           <span class="urgency-bar__text">{{ section.settings.countdown_label | escape }}</span>
           <span class="urgency-bar__clock" aria-live="polite">
-            <span data-countdown-hours>00</span>:<span data-countdown-minutes>00</span>:<span data-countdown-seconds
-              >00</span
-            >
+            <span data-countdown-hours>00</span>:<span data-countdown-minutes>00</span>:<span data-countdown-seconds>00</span>
           </span>
         </countdown-timer>
       {%- endif -%}
@@ -72,30 +73,11 @@
   "class": "section-urgency",
   "settings": [
     { "type": "header", "content": "Low stock" },
-    {
-      "type": "checkbox",
-      "id": "show_low_stock",
-      "label": "Show real low-stock warning",
-      "default": true,
-      "info": "Only shows if product inventory is tracked and <= threshold."
-    },
-    {
-      "type": "range",
-      "id": "low_stock_threshold",
-      "label": "Low-stock threshold",
-      "min": 1,
-      "max": 50,
-      "step": 1,
-      "default": 10
-    },
+    { "type": "checkbox", "id": "show_low_stock", "label": "Show real low-stock warning", "default": true, "info": "Only shows if product inventory is tracked and <= threshold." },
+    { "type": "range", "id": "low_stock_threshold", "label": "Low-stock threshold", "min": 1, "max": 50, "step": 1, "default": 10 },
     { "type": "text", "id": "low_stock_text", "label": "Low-stock text", "default": "Only [count] left in stock!" },
     { "type": "header", "content": "Mock stock (fallback)" },
-    {
-      "type": "checkbox",
-      "id": "show_mock_stock",
-      "label": "Show mock stock text if no real low-stock",
-      "default": false
-    },
+    { "type": "checkbox", "id": "show_mock_stock", "label": "Show mock stock text if no real low-stock", "default": false },
     { "type": "text", "id": "mock_stock_text", "label": "Mock stock text", "default": "Selling fast — don't miss out" },
     { "type": "header", "content": "Live viewers (mock)" },
     { "type": "checkbox", "id": "show_viewers", "label": "Show live viewer count", "default": true },
@@ -104,38 +86,12 @@
     { "type": "header", "content": "Countdown timer" },
     { "type": "checkbox", "id": "show_countdown", "label": "Show countdown", "default": true },
     { "type": "text", "id": "countdown_label", "label": "Countdown label", "default": "Order in the next" },
-    {
-      "type": "range",
-      "id": "deadline_hours",
-      "label": "Deadline (hours from session start)",
-      "min": 1,
-      "max": 72,
-      "step": 1,
-      "default": 6
-    },
+    { "type": "range", "id": "deadline_hours", "label": "Deadline (hours from session start)", "min": 1, "max": 72, "step": 1, "default": 6 },
     { "type": "checkbox", "id": "session_reset", "label": "Reset timer each session", "default": true },
     { "type": "header", "content": "Appearance" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-4" },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding top",
-      "min": 0,
-      "max": 40,
-      "step": 2,
-      "unit": "px",
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding bottom",
-      "min": 0,
-      "max": 40,
-      "step": 2,
-      "unit": "px",
-      "default": 8
-    }
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 8 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 8 }
   ],
   "presets": [{ "name": "Urgency bar" }]
 }
