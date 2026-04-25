@@ -2,15 +2,19 @@
 
 {%- liquid
   assign product = section.settings.product | default: product
+  assign hero_mode = section.settings.hero_mode | default: false
+  assign show_rating = section.settings.show_rating | default: false
+  assign show_payment_icons = section.settings.show_payment_icons | default: false
+  assign show_mini_ingredients = section.settings.show_mini_ingredients | default: false
+  assign mini_ingredients_label = section.settings.mini_ingredients_label
+  assign rating_value = section.settings.rating_value
+  assign rating_count = section.settings.rating_count
 -%}
 
 {%- if product and product != empty -%}
-  <section
-    class="product-bundle color-{{ section.settings.color_scheme }} gradient"
-    style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;"
-  >
+  <section class="product-bundle{% if hero_mode %} product-bundle--hero{% endif %} color-{{ section.settings.color_scheme }} gradient" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
     <div class="page-width">
-      {%- if section.settings.heading != blank -%}
+      {%- if section.settings.heading != blank and hero_mode == false -%}
         <div class="product-bundle__header">
           <h2 class="product-bundle__heading {{ section.settings.heading_size }}">
             {{ section.settings.heading | escape }}
@@ -22,100 +26,241 @@
       {%- endif -%}
 
       <product-bundle
-        class="product-bundle__wrapper"
+        class="product-bundle__wrapper{% if hero_mode %} product-bundle__wrapper--hero{% endif %}"
         data-url="{{ product.url }}"
-        data-product-handle="{{ product.handle }}"
-      >
-        <ul class="product-bundle__options" role="radiogroup" aria-label="Bundle options">
-          {%- for block in section.blocks -%}
-            {%- liquid
-              assign qty = block.settings.quantity | at_least: 1
-              assign discount_pct = block.settings.discount_percent | default: 0
-              assign unit_price = product.selected_or_first_available_variant.price
-              assign full_total = unit_price | times: qty
-              assign discount_amount = full_total | times: discount_pct | divided_by: 100
-              assign final_total = full_total | minus: discount_amount
-              assign per_unit = final_total | divided_by: qty
-            -%}
-            <li class="product-bundle__option-wrapper" {{ block.shopify_attributes }}>
-              <input
-                type="radio"
-                name="bundle_choice"
-                id="Bundle-{{ section.id }}-{{ forloop.index0 }}"
-                class="product-bundle__radio visually-hidden"
-                data-quantity="{{ qty }}"
-                data-discount="{{ discount_pct }}"
-                data-label="{{ block.settings.label | escape }}"
-                {% if block.settings.default %}checked{% endif %}
-              >
-              <label
-                for="Bundle-{{ section.id }}-{{ forloop.index0 }}"
-                class="product-bundle__option{% if block.settings.highlight %} is-highlighted{% endif %}"
-              >
-                {%- if block.settings.badge != blank -%}
-                  <span class="product-bundle__ribbon">{{ block.settings.badge | escape }}</span>
+        data-product-handle="{{ product.handle }}">
+        {%- if hero_mode -%}
+          <div class="product-bundle__media">
+            {%- if product.featured_image != blank -%}
+              {{
+                product.featured_image | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', width: 600, height: 750, sizes: '(min-width: 990px) 50vw, 100vw', widths: '375,550,750,1100,1500', class: 'product-bundle__media-img', alt: product.featured_image.alt
+              }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        <div class="product-bundle__details">
+          {%- if hero_mode -%}
+            <div class="product-bundle__hero-header">
+              <h1 class="product-bundle__title">{{ product.title | escape }}</h1>
+              <div class="product-bundle__price-row">
+                <span class="product-bundle__hero-price" data-bundle-base-price>
+                  {{- product.selected_or_first_available_variant.price | money -}}
+                </span>
+                {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+                  <s class="product-bundle__hero-compare">
+                    {{- product.selected_or_first_available_variant.compare_at_price | money -}}
+                  </s>
                 {%- endif -%}
-
-                <div class="product-bundle__option-main">
-                  <div class="product-bundle__qty-visual" aria-hidden="true">
-                    {%- for i in (1..qty) -%}
-                      {%- if i <= 3 -%}
-                        <span class="product-bundle__qty-dot"></span>
-                      {%- endif -%}
+              </div>
+              {%- if show_rating and rating_value != blank -%}
+                <div class="product-bundle__rating" aria-label="Rated {{ rating_value }} out of 5">
+                  <span class="product-bundle__stars" aria-hidden="true">
+                    {%- assign rv = rating_value | times: 1.0 -%}
+                    {%- for i in (1..5) -%}
+                      {%- if i <= rv -%}★{%- else -%}☆{%- endif -%}
                     {%- endfor -%}
-                  </div>
-                  <div class="product-bundle__option-text">
-                    <p class="product-bundle__option-label">{{ block.settings.label | escape }}</p>
-                    {%- if block.settings.description != blank -%}
-                      <p class="product-bundle__option-description">{{ block.settings.description | escape }}</p>
-                    {%- endif -%}
-                  </div>
+                  </span>
+                  <span class="product-bundle__rating-text">
+                    {{ rating_value }}{% if rating_count != blank %}
+                      ({{ rating_count }} Reviews){% endif %}
+                  </span>
                 </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
 
-                <div class="product-bundle__option-pricing">
-                  {%- if discount_pct > 0 -%}
-                    <span class="product-bundle__discount-badge">Save {{ discount_pct }}%</span>
-                  {%- endif -%}
-                  <p class="product-bundle__total-price">
-                    <span data-bundle-total>{{ final_total | money }}</span>
+          {%- if hero_mode and section.settings.bundle_label != blank -%}
+            <p class="product-bundle__bundle-label">{{ section.settings.bundle_label | escape }}</p>
+          {%- endif -%}
+
+          <ul
+            class="product-bundle__options"
+            role="radiogroup"
+            aria-label="Bundle options">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'pack' -%}
+                {%- liquid
+                  assign qty = block.settings.quantity | at_least: 1
+                  assign discount_pct = block.settings.discount_percent | default: 0
+                  assign unit_price = product.selected_or_first_available_variant.price
+                  assign full_total = unit_price | times: qty
+                  assign discount_amount = full_total | times: discount_pct | divided_by: 100
+                  assign final_total = full_total | minus: discount_amount
+                  assign per_unit = final_total | divided_by: qty
+                -%}
+                <li class="product-bundle__option-wrapper" {{ block.shopify_attributes }}>
+                  <input
+                    type="radio"
+                    name="bundle_choice"
+                    id="Bundle-{{ section.id }}-{{ forloop.index0 }}"
+                    class="product-bundle__radio visually-hidden"
+                    data-quantity="{{ qty }}"
+                    data-discount="{{ discount_pct }}"
+                    data-label="{{ block.settings.label | escape }}"
+                    {% if block.settings.default %}
+                    checked{% endif %}>
+                  <label for="Bundle-{{ section.id }}-{{ forloop.index0 }}" class="product-bundle__option{% if block.settings.highlight %} is-highlighted{% endif %}">
+                    <div class="product-bundle__option-main">
+                      <span class="product-bundle__radio-dot" aria-hidden="true"></span>
+                      <div class="product-bundle__option-text">
+                        <p class="product-bundle__option-label">{{ block.settings.label | escape }}{% if discount_pct > 0 %}
+                            <span class="product-bundle__inline-save">(Save {{ discount_pct }}%)</span>
+                          {% endif %}
+                          -
+                          <span data-bundle-total>{{ final_total | money }}</span>
+                        </p>
+                        {%- if block.settings.description != blank -%}
+                          <p class="product-bundle__option-description">{{ block.settings.description | escape }}</p>
+                        {%- endif -%}
+                      </div>
+                    </div>
+
+                    {%- if block.settings.badge != blank -%}
+                      <span class="product-bundle__ribbon">{{ block.settings.badge | escape }}</span>
+                    {%- endif -%}
+
                     {%- if discount_pct > 0 -%}
                       <s class="product-bundle__strike" data-bundle-strike>{{ full_total | money }}</s>
                     {%- endif -%}
-                  </p>
-                  <p class="product-bundle__per-unit">
-                    <span data-bundle-per-unit>{{ per_unit | money }}</span> / each
-                  </p>
-                </div>
-              </label>
-            </li>
-          {%- endfor -%}
-        </ul>
-
-        <form
-          class="product-bundle__form"
-          action="{{ routes.cart_add_url }}"
-          method="post"
-          enctype="multipart/form-data"
-          data-bundle-form
-        >
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-bundle-variant-input>
-          <input type="hidden" name="quantity" value="1" data-bundle-qty-input>
-          <input type="hidden" name="properties[_bundle]" value="" data-bundle-label-input>
-          <input type="hidden" name="properties[_bundle_discount]" value="0" data-bundle-discount-input>
-
-          <button type="submit" class="product-bundle__cta button button--primary">
-            <span class="product-bundle__cta-label">{{ section.settings.cta_label | default: 'Add bundle to cart' }}</span>
-            <span class="product-bundle__cta-price" data-bundle-cta-total></span>
-          </button>
-        </form>
-
-        {%- if section.settings.show_trust_row -%}
-          <ul class="product-bundle__trust-row" role="list">
-            <li>✓ {{ section.settings.trust_1 | default: 'Free shipping' }}</li>
-            <li>✓ {{ section.settings.trust_2 | default: '30-day guarantee' }}</li>
-            <li>✓ {{ section.settings.trust_3 | default: 'Ships in 24h' }}</li>
+                    <span class="visually-hidden" data-bundle-per-unit>{{ per_unit | money }}</span>
+                  </label>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
           </ul>
-        {%- endif -%}
+
+          <form
+            class="product-bundle__form"
+            action="{{ routes.cart_add_url }}"
+            method="post"
+            enctype="multipart/form-data"
+            data-bundle-form>
+            <input
+              type="hidden"
+              name="id"
+              value="{{ product.selected_or_first_available_variant.id }}"
+              data-bundle-variant-input>
+            <input
+              type="hidden"
+              name="quantity"
+              value="1"
+              data-bundle-qty-input>
+            <input
+              type="hidden"
+              name="properties[_bundle]"
+              value=""
+              data-bundle-label-input>
+            <input
+              type="hidden"
+              name="properties[_bundle_discount]"
+              value="0"
+              data-bundle-discount-input>
+
+            <button type="submit" class="product-bundle__cta button button--primary">
+              <span class="product-bundle__cta-label">{{ section.settings.cta_label | default: 'ADD TO CART' }}</span>
+              <span class="product-bundle__cta-price" data-bundle-cta-total></span>
+            </button>
+          </form>
+
+          {%- if hero_mode and show_payment_icons -%}
+            <div class="product-bundle__payments" aria-label="Accepted payment methods">
+              {%- if shop.enabled_payment_types.size > 0 -%}
+                {%- for type in shop.enabled_payment_types -%}
+                  {{ type | payment_type_svg_tag: class: 'product-bundle__payment-icon' }}
+                {%- endfor -%}
+              {%- else -%}
+                <span class="product-bundle__payment-pill">VISA</span>
+                <span class="product-bundle__payment-pill">Mastercard</span>
+                <span class="product-bundle__payment-pill">PayPal</span>
+                <span class="product-bundle__payment-pill">Apple Pay</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if hero_mode and show_mini_ingredients -%}
+            {%- assign key_ingredients = product.metafields.custom.key_ingredients.value -%}
+            {%- if key_ingredients != blank -%}
+              <div class="product-bundle__mini-ingredients">
+                {%- if mini_ingredients_label != blank -%}
+                  <p class="product-bundle__mini-ingredients-label">{{ mini_ingredients_label | escape }}</p>
+                {%- endif -%}
+                <ul class="product-bundle__mini-ingredients-list" role="list">
+                  {%- for item in key_ingredients limit: 3 -%}
+                    <li class="product-bundle__mini-ingredient">
+                      {%- if item.image != blank -%}
+                        {{
+                          item.image | image_url: width: 96 | image_tag: loading: 'lazy', width: 48, height: 48, class: 'product-bundle__mini-ingredient-img', alt: item.name
+                        }}
+                      {%- endif -%}
+                      <div>
+                        <p class="product-bundle__mini-ingredient-name">{{ item.name | escape }}</p>
+                        {%- if item.benefit != blank -%}
+                          <p class="product-bundle__mini-ingredient-text">{{ item.benefit | escape }}</p>
+                        {%- elsif item.description != blank -%}
+                          <p class="product-bundle__mini-ingredient-text">{{ item.description | strip_html | truncate: 60 }}</p>
+                        {%- endif -%}
+                      </div>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- elsif section.blocks.size > 0 -%}
+              {%- assign ingredient_blocks = section.blocks | where: 'type', 'mini_ingredient' -%}
+              {%- if ingredient_blocks.size > 0 -%}
+                <div class="product-bundle__mini-ingredients">
+                  {%- if mini_ingredients_label != blank -%}
+                    <p class="product-bundle__mini-ingredients-label">{{ mini_ingredients_label | escape }}</p>
+                  {%- endif -%}
+                  <ul class="product-bundle__mini-ingredients-list" role="list">
+                    {%- for block in ingredient_blocks -%}
+                      <li class="product-bundle__mini-ingredient" {{ block.shopify_attributes }}>
+                        <div class="product-bundle__mini-ingredient-icon" aria-hidden="true">
+                          {%- if block.settings.image != blank -%}
+                            {{
+                              block.settings.image | image_url: width: 96 | image_tag: loading: 'lazy', width: 48, height: 48, alt: block.settings.title
+                            }}
+                          {%- else -%}
+                            {%- case block.settings.icon -%}
+                              {%- when 'leaf' -%}
+                                {{ 'icon-leaf.svg' | inline_asset_content }}
+                              {%- when 'plant' -%}
+                                {{ 'icon-plant.svg' | inline_asset_content }}
+                              {%- when 'heart' -%}
+                                {{ 'icon-heart.svg' | inline_asset_content }}
+                              {%- when 'star' -%}
+                                {{ 'icon-star.svg' | inline_asset_content }}
+                              {%- when 'check' -%}
+                                {{ 'icon-check-mark.svg' | inline_asset_content }}
+                              {%- else -%}
+                                {{ 'icon-leaf.svg' | inline_asset_content }}
+                            {%- endcase -%}
+                          {%- endif -%}
+                        </div>
+                        <div>
+                          {%- if block.settings.title != blank -%}
+                            <p class="product-bundle__mini-ingredient-name">{{ block.settings.title | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.text != blank -%}
+                            <p class="product-bundle__mini-ingredient-text">{{ block.settings.text | escape }}</p>
+                          {%- endif -%}
+                        </div>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- if section.settings.show_trust_row and hero_mode == false -%}
+            <ul class="product-bundle__trust-row" role="list">
+              <li>✓ {{ section.settings.trust_1 | default: 'Free shipping' }}</li>
+              <li>✓ {{ section.settings.trust_2 | default: '30-day guarantee' }}</li>
+              <li>✓ {{ section.settings.trust_3 | default: 'Ships in 24h' }}</li>
+            </ul>
+          {%- endif -%}
+        </div>
       </product-bundle>
     </div>
   </section>
@@ -124,70 +269,353 @@
 {%- endif -%}
 
 {% schema %}
-{
-  "name": "Product bundle",
-  "tag": "section",
-  "class": "section-product-bundle",
-  "settings": [
-    { "type": "product", "id": "product", "label": "Product", "info": "Leave empty on a product page to use the current product." },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Choose your bundle & save" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "The more you buy, the more you save" },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "label": "Heading size",
-      "options": [
-        { "value": "h1", "label": "Large" },
-        { "value": "h2", "label": "Medium" },
-        { "value": "h3", "label": "Small" }
-      ],
-      "default": "h2"
-    },
-    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Add bundle to cart" },
-    { "type": "header", "content": "Trust row" },
-    { "type": "checkbox", "id": "show_trust_row", "label": "Show trust row", "default": true },
-    { "type": "text", "id": "trust_1", "label": "Trust item 1", "default": "Free shipping over $50" },
-    { "type": "text", "id": "trust_2", "label": "Trust item 2", "default": "30-day money back" },
-    { "type": "text", "id": "trust_3", "label": "Trust item 3", "default": "Ships in 24h" },
-    { "type": "header", "content": "Appearance" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
-    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 32 },
-    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 32 }
-  ],
-  "blocks": [
-    {
-      "type": "pack",
-      "name": "Bundle option",
-      "settings": [
-        { "type": "text", "id": "label", "label": "Label", "default": "1 Pack" },
-        { "type": "text", "id": "description", "label": "Description", "default": "Try it out" },
-        { "type": "range", "id": "quantity", "label": "Quantity", "min": 1, "max": 12, "step": 1, "default": 1 },
-        { "type": "range", "id": "discount_percent", "label": "Discount %", "min": 0, "max": 60, "step": 1, "default": 0 },
-        { "type": "text", "id": "badge", "label": "Badge text", "default": "Bundler Offer" },
-        { "type": "checkbox", "id": "highlight", "label": "Highlight as best value", "default": false },
-        { "type": "checkbox", "id": "default", "label": "Selected by default", "default": false }
-      ]
-    }
-  ],
-  "max_blocks": 5,
-  "presets": [
-    {
-      "name": "Product bundle",
-      "blocks": [
-        {
-          "type": "pack",
-          "settings": { "label": "1 Pack", "description": "Try it out", "quantity": 1, "discount_percent": 0, "default": true }
+  {
+    "name": "Product bundle",
+    "tag": "section",
+    "class": "section-product-bundle",
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product",
+        "info": "Leave empty on a product page to use the current product."
+      },
+      {
+        "type": "header",
+        "content": "Hero layout"
+      },
+      {
+        "type": "checkbox",
+        "id": "hero_mode",
+        "label": "Use as hero (image + details + bundle)",
+        "default": false,
+        "info": "Renders product image on the left and full bundle details on the right. Use this on the home page or as a landing hero."
+      },
+      {
+        "type": "text",
+        "id": "bundle_label",
+        "label": "Bundle label",
+        "default": "Bundle Selector"
+      }, {
+        "type": "header",
+        "content": "Rating (hero mode)"
+      }, {
+        "type": "checkbox",
+        "id": "show_rating",
+        "label": "Show star rating",
+        "default": true
+      }, {
+        "type": "text",
+        "id": "rating_value",
+        "label": "Rating value",
+        "default": "4.9"
+      }, {
+        "type": "text",
+        "id": "rating_count",
+        "label": "Review count",
+        "default": "1,245"
+      }, {
+        "type": "header",
+        "content": "Payment icons (hero mode)"
+      }, {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show accepted payment methods",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "Mini ingredients row (hero mode)"
+      }, {
+        "type": "checkbox",
+        "id": "show_mini_ingredients",
+        "label": "Show metafield-driven ingredients row",
+        "default": true,
+        "info": "Renders product.metafields.custom.key_ingredients (up to 3). Falls back to mini_ingredient blocks below."
+      }, {
+        "type": "text",
+        "id": "mini_ingredients_label",
+        "label": "Row label",
+        "default": "Metafield-Driven"
+      }, {
+        "type": "header",
+        "content": "Standalone heading (non-hero mode)"
+      }, {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Choose your bundle & save"
+      }, {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "The more you buy, the more you save"
+      }, {
+        "type": "select",
+        "id": "heading_size",
+        "label": "Heading size",
+        "options": [
+          {
+            "value": "h1",
+            "label": "Large"
+          }, {
+            "value": "h2",
+            "label": "Medium"
+          }, {
+            "value": "h3",
+            "label": "Small"
+          }
+        ],
+        "default": "h2"
+      }, {
+        "type": "text",
+        "id": "cta_label",
+        "label": "CTA label",
+        "default": "ADD TO CART"
+      }, {
+        "type": "header",
+        "content": "Trust row (non-hero mode)"
+      }, {
+        "type": "checkbox",
+        "id": "show_trust_row",
+        "label": "Show trust row",
+        "default": true
+      }, {
+        "type": "text",
+        "id": "trust_1",
+        "label": "Trust item 1",
+        "default": "Free shipping over $50"
+      }, {
+        "type": "text",
+        "id": "trust_2",
+        "label": "Trust item 2",
+        "default": "30-day money back"
+      }, {
+        "type": "text",
+        "id": "trust_3",
+        "label": "Trust item 3",
+        "default": "Ships in 24h"
+      }, {
+        "type": "header",
+        "content": "Appearance"
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "scheme-1"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "default": 32
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "default": 32
+      }
+    ],
+    "blocks": [
+      {
+        "type": "pack",
+        "name": "Bundle option",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "1 Bottle (1 Month Supply)"
+          },
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+          },
+          {
+            "type": "range",
+            "id": "quantity",
+            "label": "Quantity",
+            "min": 1,
+            "max": 12,
+            "step": 1,
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "discount_percent",
+            "label": "Discount %",
+            "min": 0,
+            "max": 60,
+            "step": 1,
+            "default": 0
+          }, {
+            "type": "text",
+            "id": "badge",
+            "label": "Badge text",
+            "default": "Bager"
+          }, {
+            "type": "checkbox",
+            "id": "highlight",
+            "label": "Highlight as best value",
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "default",
+            "label": "Selected by default",
+            "default": false
+          }
+        ]
+      }, {
+        "type": "mini_ingredient",
+        "name": "Mini ingredient fallback",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Used only when product metafields custom.key_ingredients is empty."
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image (optional)"
+          },
+          {
+            "type": "select",
+            "id": "icon",
+            "label": "Icon (if no image)",
+            "options": [
+              {
+                "value": "leaf",
+                "label": "Leaf"
+              },
+              {
+                "value": "plant",
+                "label": "Plant"
+              },
+              {
+                "value": "heart",
+                "label": "Heart"
+              },
+              {
+                "value": "star",
+                "label": "Star"
+              }, {
+                "value": "check",
+                "label": "Check"
+              }
+            ],
+            "default": "leaf"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Hyaluronic Acid"
+          }, {
+            "type": "text",
+            "id": "text",
+            "label": "Subtitle",
+            "default": "Hydrates skin"
+          }
+        ]
+      }
+    ],
+    "max_blocks": 8,
+    "presets": [
+      {
+        "name": "Product bundle",
+        "blocks": [
+          {
+            "type": "pack",
+            "settings": {
+              "label": "1 Bottle (1 Month Supply)",
+              "quantity": 1,
+              "discount_percent": 0,
+              "default": true
+            }
+          }, {
+            "type": "pack",
+            "settings": {
+              "label": "2 Bottles",
+              "quantity": 2,
+              "discount_percent": 15,
+              "badge": "MOST POPULAR"
+            }
+          }, {
+            "type": "pack",
+            "settings": {
+              "label": "3 Bottles",
+              "quantity": 3,
+              "discount_percent": 25,
+              "highlight": true
+            }
+          }
+        ]
+      }, {
+        "name": "Product bundle (Hero)",
+        "settings": {
+          "hero_mode": true,
+          "color_scheme": "scheme-1"
         },
-        {
-          "type": "pack",
-          "settings": { "label": "2 Pack", "description": "Most popular", "quantity": 2, "discount_percent": 10, "badge": "Popular" }
-        },
-        {
-          "type": "pack",
-          "settings": { "label": "3 Pack", "description": "Best value", "quantity": 3, "discount_percent": 20, "badge": "Best value", "highlight": true }
-        }
-      ]
-    }
-  ]
-}
+        "blocks": [
+          {
+            "type": "pack",
+            "settings": {
+              "label": "1 Bottle (1 Month Supply)",
+              "quantity": 1,
+              "discount_percent": 0,
+              "default": true
+            }
+          },
+          {
+            "type": "pack",
+            "settings": {
+              "label": "2 Bottles",
+              "quantity": 2,
+              "discount_percent": 15,
+              "badge": "MOST POPULAR"
+            }
+          },
+          {
+            "type": "pack",
+            "settings": {
+              "label": "3 Bottles",
+              "quantity": 3,
+              "discount_percent": 25,
+              "highlight": true
+            }
+          },
+          {
+            "type": "mini_ingredient",
+            "settings": {
+              "icon": "leaf",
+              "title": "Hyaluronic Acid",
+              "text": "Hydrates skin"
+            }
+          }, {
+            "type": "mini_ingredient",
+            "settings": {
+              "icon": "star",
+              "title": "Vitamin C",
+              "text": "Brightens"
+            }
+          }, {
+            "type": "mini_ingredient",
+            "settings": {
+              "icon": "plant",
+              "title": "Aloe Vera",
+              "text": "Soothes"
+            }
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}
