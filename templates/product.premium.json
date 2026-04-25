@@ -1,216 +1,229 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "urgency": {
-      "type": "urgency-bar",
-      "settings": {
-        "show_low_stock": true,
-        "low_stock_threshold": 10,
-        "low_stock_text": "Only [count] left in stock!",
-        "show_mock_stock": true,
-        "mock_stock_text": "Selling fast — don't miss out",
-        "show_viewers": true,
-        "viewers_min": 14,
-        "viewers_max": 38,
-        "show_countdown": true,
-        "countdown_label": "Order in the next",
-        "deadline_hours": 6,
-        "session_reset": true,
-        "color_scheme": "scheme-4",
-        "padding_top": 8,
-        "padding_bottom": 8
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": { "type": "text", "settings": { "text": "{{ product.vendor }}", "text_style": "uppercase" } },
-        "title": { "type": "title" },
-        "caption": { "type": "text", "settings": { "text": "{{ product.metafields.descriptors.subtitle.value }}", "text_style": "subtitle" } },
-        "price": { "type": "price" },
-        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button" } },
-        "quantity_selector": { "type": "quantity_selector" },
-        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true, "show_gift_card_recipient": false } },
-        "description": { "type": "description" },
-        "tab_ingredients": { "type": "collapsible_tab", "settings": { "heading": "Key ingredients", "icon": "leaf", "content": "<p>See the ingredients section below for details.</p>" } },
-        "tab_how_to_use": { "type": "collapsible_tab", "settings": { "heading": "How to use", "icon": "check_mark", "content": "<p>Apply twice daily after cleansing.</p>" } },
-        "tab_shipping": { "type": "collapsible_tab", "settings": { "heading": "Shipping & returns", "icon": "truck", "content": "<p>Free shipping on orders $50+. 30-day money-back guarantee.</p>" } },
-        "share": { "type": "share", "settings": { "share_label": "Share" } }
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "caption": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible-row-0": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials",
+            "icon": "leather",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "icon": "truck",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Dimensions",
+            "icon": "ruler",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Care Instructions",
+            "icon": "heart",
+            "content": "",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
       },
       "block_order": [
-        "vendor", "title", "caption", "price", "variant_picker",
-        "quantity_selector", "buy_buttons", "description",
-        "tab_ingredients", "tab_how_to_use", "tab_shipping", "share"
+        "vendor",
+        "title",
+        "caption",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "collapsible-row-0",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "collapsible-row-3",
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
-        "gallery_layout": "thumbnail",
         "media_size": "large",
         "constrain_to_viewport": true,
-        "mobile_thumbnails": "show",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 24,
-        "padding_bottom": 24
+        "padding_top": 36,
+        "padding_bottom": 12
       }
     },
-    "bundle": {
-      "type": "product-bundle",
+    "image-with-text": {
+      "type": "image-with-text",
       "blocks": {
-        "pack-1": { "type": "pack", "settings": { "label": "1 Pack", "description": "Try it out", "quantity": 1, "discount_percent": 0 } },
-        "pack-2": { "type": "pack", "settings": { "label": "2 Pack", "description": "Most popular", "quantity": 2, "discount_percent": 10, "badge": "Popular", "default": true } },
-        "pack-3": { "type": "pack", "settings": { "label": "3 Pack", "description": "Best value", "quantity": 3, "discount_percent": 20, "badge": "Best value", "highlight": true } }
+        "image-with-text-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "image-with-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        }
       },
-      "block_order": ["pack-1", "pack-2", "pack-3"],
+      "block_order": [
+        "image-with-text-0",
+        "image-with-text-1"
+      ],
       "settings": {
-        "heading": "Choose your bundle & save",
-        "subheading": "The more you buy, the more you save",
-        "heading_size": "h2",
-        "cta_label": "Add bundle to cart",
-        "show_trust_row": true,
-        "trust_1": "Free shipping over $50",
-        "trust_2": "30-day money back",
-        "trust_3": "Ships in 24h",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
         "color_scheme": "scheme-2",
-        "padding_top": 32,
-        "padding_bottom": 32
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "icon-grid": {
-      "type": "icon-text-grid",
+    "multicolumn": {
+      "type": "multicolumn",
       "blocks": {
-        "i1": { "type": "item", "settings": { "icon": "truck", "title": "Free shipping", "text": "<p>On orders over $50 in the US.</p>" } },
-        "i2": { "type": "item", "settings": { "icon": "leaf", "title": "Clean formula", "text": "<p>No parabens, no sulfates, no junk.</p>" } },
-        "i3": { "type": "item", "settings": { "icon": "return", "title": "30-day guarantee", "text": "<p>Love it or your money back.</p>" } },
-        "i4": { "type": "item", "settings": { "icon": "padlock", "title": "Secure checkout", "text": "<p>SSL-encrypted payments.</p>" } }
+        "column-0": {
+          "type": "column",
+          "settings": {
+            "title": "Free Shipping",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-1": {
+          "type": "column",
+          "settings": {
+            "title": "Hassle-Free Exchanges",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["i1", "i2", "i3", "i4"],
+      "block_order": [
+        "column-0",
+        "column-1"
+      ],
       "settings": {
-        "subheading": "Why you'll love it",
-        "heading": "The difference in every drop",
-        "heading_size": "h2",
-        "columns": 4,
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
         "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "ingredients": {
-      "type": "product-ingredients",
+    "related-products": {
+      "type": "related-products",
       "settings": {
-        "subheading": "Clean formula",
-        "heading": "Key ingredients",
+        "heading": "You may also like",
         "heading_size": "h2",
-        "full_label": "See full ingredient list",
-        "color_scheme": "scheme-2",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "comparison": {
-      "type": "comparison-table",
-      "blocks": {
-        "col-1": { "type": "column", "settings": { "name": "Our product", "highlight": true, "badge": "Best" } },
-        "col-2": { "type": "column", "settings": { "name": "Competitor A" } },
-        "col-3": { "type": "column", "settings": { "name": "Competitor B" } },
-        "row-1": { "type": "row", "settings": { "feature": "Clinically tested", "col_1": "yes", "col_2": "no", "col_3": "no" } },
-        "row-2": { "type": "row", "settings": { "feature": "Vegan & cruelty-free", "col_1": "yes", "col_2": "yes", "col_3": "no" } },
-        "row-3": { "type": "row", "settings": { "feature": "Free shipping", "col_1": "yes", "col_2": "no", "col_3": "no" } },
-        "row-4": { "type": "row", "settings": { "feature": "30-day guarantee", "col_1": "yes", "col_2": "no", "col_3": "yes" } },
-        "row-5": { "type": "row", "settings": { "feature": "Dermatologist approved", "col_1": "yes", "col_2": "no", "col_3": "no" } }
-      },
-      "block_order": ["col-1", "col-2", "col-3", "row-1", "row-2", "row-3", "row-4", "row-5"],
-      "settings": {
-        "subheading": "Why choose us",
-        "heading": "See the difference",
-        "heading_size": "h2",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
       }
-    },
-    "testimonials": {
-      "type": "testimonials-slider",
-      "blocks": {
-        "t1": { "type": "testimonial", "settings": { "rating": 5, "quote": "<p>Honestly the best product I've used in years. Real results within weeks.</p>", "author": "Sarah M.", "location": "New York, NY", "verified": true } },
-        "t2": { "type": "testimonial", "settings": { "rating": 5, "quote": "<p>I've tried everything — this is the only thing that actually worked.</p>", "author": "Jamie L.", "location": "Austin, TX", "verified": true } },
-        "t3": { "type": "testimonial", "settings": { "rating": 5, "quote": "<p>Gentle, effective, and smells amazing. Already on my third bottle!</p>", "author": "Priya K.", "location": "Los Angeles, CA", "verified": true } }
-      },
-      "block_order": ["t1", "t2", "t3"],
-      "settings": {
-        "subheading": "Loved by thousands",
-        "heading": "What our customers say",
-        "heading_size": "h2",
-        "show_rating": true,
-        "rating_value": "4.9",
-        "review_count": "2,480",
-        "rating_label": "reviews",
-        "autoplay": true,
-        "autoplay_interval": 6,
-        "color_scheme": "scheme-2",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "faq": {
-      "type": "product-faq",
-      "blocks": {
-        "q1": { "type": "question", "settings": { "question": "How long until I see results?", "answer": "<p>Most customers see visible results within 2–4 weeks of daily use.</p>", "open_by_default": true } },
-        "q2": { "type": "question", "settings": { "question": "Is it safe for sensitive skin?", "answer": "<p>Yes — our formula is dermatologist-tested and fragrance-free.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "What's your return policy?", "answer": "<p>30-day money-back guarantee on all orders, no questions asked.</p>" } },
-        "q4": { "type": "question", "settings": { "question": "Do you ship internationally?", "answer": "<p>Yes, we ship to over 50 countries worldwide.</p>" } }
-      },
-      "block_order": ["q1", "q2", "q3", "q4"],
-      "settings": {
-        "subheading": "FAQ",
-        "heading": "Frequently asked questions",
-        "heading_size": "h2",
-        "faq_source": "section",
-        "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "upsell": {
-      "type": "dynamic-upsell",
-      "settings": {
-        "subheading": "Complete your routine",
-        "heading": "You might also love",
-        "heading_size": "h2",
-        "intent": "complementary",
-        "limit": 4,
-        "button_label": "Add to cart",
-        "color_scheme": "scheme-2",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "trust-badges": {
-      "type": "trust-badges",
-      "blocks": {
-        "b1": { "type": "badge", "settings": { "icon": "truck", "title": "Free shipping", "text": "Orders over $50" } },
-        "b2": { "type": "badge", "settings": { "icon": "return", "title": "Easy returns", "text": "30-day policy" } },
-        "b3": { "type": "badge", "settings": { "icon": "padlock", "title": "Secure checkout", "text": "SSL encrypted" } },
-        "b4": { "type": "badge", "settings": { "icon": "chat", "title": "24/7 support", "text": "We're here" } }
-      },
-      "block_order": ["b1", "b2", "b3", "b4"],
-      "settings": { "color_scheme": "scheme-2", "padding_top": 20, "padding_bottom": 20 }
-    },
-    "sticky-atc": {
-      "type": "sticky-atc",
-      "settings": {}
     }
   },
   "order": [
-    "urgency",
     "main",
-    "bundle",
-    "icon-grid",
-    "ingredients",
-    "comparison",
-    "testimonials",
-    "faq",
-    "upsell",
-    "trust-badges",
-    "sticky-atc"
+    "image-with-text",
+    "multicolumn",
+    "related-products"
   ]
 }
