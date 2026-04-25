@@ -105,7 +105,7 @@
     </div>
   
       <style id="custom-css-gIpsF3gCBi">
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+          * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --accent: #8b1e2d;
@@ -162,9 +162,13 @@
     border-radius: 6px;
     overflow: hidden;
     aspect-ratio: 4/5;
-    background:
-      linear-gradient(180deg, rgba(245,228,210,0.2), rgba(220,195,170,0.3)),
-      url('https://cdn.shopify.com/s/files/1/0824/3976/6260/files/maditation.webp?v=1777130068') center/cover no-repeat;
+  }
+
+  .timeline-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .timeline {
@@ -293,40 +297,36 @@
       <script id="custom-js-gIpsF3gCBi">
         try {
           (function () {
-        var timeline = document.getElementById("timeline");
-        var progress = document.getElementById("progress");
-        var steps = Array.prototype.slice.call(
-          timeline.querySelectorAll(".step"),
-        );
-        var icons = steps.map(function (s) {
-          return s.querySelector(".step-icon");
-        });
+    var timeline = document.getElementById('timeline');
+    var progress = document.getElementById('progress');
+    var steps = Array.prototype.slice.call(timeline.querySelectorAll('.step'));
+    var icons = steps.map(function (s) { return s.querySelector('.step-icon'); });
 
-        function update() {
-          var tlRect = timeline.getBoundingClientRect();
-          var triggerY = window.innerHeight * 0.55;
+    function update() {
+      var tlRect = timeline.getBoundingClientRect();
+      var triggerY = window.innerHeight * 0.55;
 
-          var lineTop = tlRect.top + 20;
-          var lineBottom = tlRect.bottom - 20;
-          var lineHeight = lineBottom - lineTop;
+      var lineTop = tlRect.top + 20;
+      var lineBottom = tlRect.bottom - 20;
+      var lineHeight = lineBottom - lineTop;
 
-          var filled = triggerY - lineTop;
-          if (filled < 0) filled = 0;
-          if (filled > lineHeight) filled = lineHeight;
-          progress.style.height = filled + "px";
+      var filled = triggerY - lineTop;
+      if (filled < 0) filled = 0;
+      if (filled > lineHeight) filled = lineHeight;
+      progress.style.height = filled + 'px';
 
-          steps.forEach(function (step, i) {
-            var r = icons[i].getBoundingClientRect();
-            var center = r.top + r.height / 2;
-            if (center <= triggerY) step.classList.add("active");
-            else step.classList.remove("active");
-          });
-        }
+      steps.forEach(function (step, i) {
+        var r = icons[i].getBoundingClientRect();
+        var center = r.top + r.height / 2;
+        if (center <= triggerY) step.classList.add('active');
+        else step.classList.remove('active');
+      });
+    }
 
-        window.addEventListener("scroll", update, { passive: true });
-        window.addEventListener("resize", update);
-        update();
-      })();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
         } catch(err){}
       </script>
     
