@@ -445,7 +445,8 @@
         ".testimonials-slider__subheading {font-size: 16px;}",
         ".testimonials-slider__header {padding: 43px;}",
         ".testimonials-slider__rating-text {font-size: 16px;}",
-        ".testimonials-slider__stars {font-size: 24px;}"
+        ".testimonials-slider__stars {font-size: 24px;}",
+        ".testimonial-card__quote {font-size: 16px; }"
       ],
       "settings": {
         "subheading": "Loved by thousands",
