@@ -443,7 +443,8 @@
       ],
       "custom_css": [
         ".testimonials-slider__subheading {font-size: 16px;}",
-        ".testimonials-slider__header {text-align: center; margin-bottom: 2.5rem; padding: 43px;}"
+        ".testimonials-slider__header {padding: 43px;}",
+        ".testimonials-slider__rating-text {color: var(--dtc-muted); font-size: 16px;}"
       ],
       "settings": {
         "subheading": "Loved by thousands",
