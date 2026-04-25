@@ -13,18 +13,18 @@
       "type": "urgency-bar",
       "settings": {
         "show_low_stock": true,
-        "low_stock_threshold": 10,
+        "low_stock_threshold": 11,
         "low_stock_text": "Only [count] left in stock!",
         "show_mock_stock": true,
         "mock_stock_text": "Selling fast — don't miss out",
         "show_viewers": true,
-        "viewers_min": 14,
-        "viewers_max": 38,
+        "viewers_min": 35,
+        "viewers_max": 24,
         "show_countdown": true,
         "countdown_label": "Order in the next",
         "deadline_hours": 6,
         "session_reset": true,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-3",
         "padding_top": 8,
         "padding_bottom": 8
       }
@@ -105,6 +105,7 @@
         },
         "share": {
           "type": "share",
+          "disabled": true,
           "settings": {
             "share_label": "Share"
           }
@@ -203,7 +204,7 @@
         "trust_1": "Free shipping over $50",
         "trust_2": "30-day money back",
         "trust_3": "Ships in 24h",
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
         "padding_top": 32,
         "padding_bottom": 32
       }
