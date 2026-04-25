@@ -144,7 +144,7 @@
     },
     "gp_section_616720521253356225": {
       "settings": {
-        "checksum": "65c6bd41ec9c7f6200ac5d3d2f704fcb11551b497ae006d68a6547762c132f39_1_1_1_0__1",
+        "checksum": "03a6c0a49dc1afcb194cef199afd5cf2eb2df0b1386492aa968485930df34fcc_1_1_1_0__1",
         "gg1VwC9y7eK_text": "<p>Trusted by 100,000+ customers and backed by our 90-day money-back guarantee.</p>",
         "gg68d1v13B8_text": "<p>Astaxanthin is recognized as one of the most powerful antioxidants available. Research shows it is:</p>",
         "ggAOotfBZ3W_text": "<p>✔ Natural microalgae source<br>✔ Oil-based for absorption<br>✔ No fillers or unnecessary additives</p>",
@@ -173,6 +173,12 @@
         "ggujSuAIR17_text": "<strong>Discover Why Experts Trust Rovina Astaxanthin</strong>"
       },
       "type": "gp-section-616720521253356225"
+    },
+    "gp_section_616727854993900523": {
+      "settings": {
+        "checksum": "ec4e0940f0912ddea0329415f8243e2a448afa7b4b8e85d24a5dfcdd615d3b25_1_1_1_0__1"
+      },
+      "type": "gp-section-616727854993900523"
     }
   },
   "order": [
@@ -181,6 +187,7 @@
     "gp_section_616706376399324139",
     "gp_section_616713459907691499",
     "gp_section_616714264660411040",
+    "gp_section_616727854993900523",
     "gp_section_616720521253356225"
   ]
 }
