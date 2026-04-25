@@ -444,7 +444,8 @@
       "custom_css": [
         ".testimonials-slider__subheading {font-size: 16px;}",
         ".testimonials-slider__header {padding: 43px;}",
-        ".testimonials-slider__rating-text {color: var(--dtc-muted); font-size: 16px;}"
+        ".testimonials-slider__rating-text {font-size: 16px;}",
+        ".testimonials-slider__stars {font-size: 24px;}"
       ],
       "settings": {
         "subheading": "Loved by thousands",
