@@ -86,9 +86,17 @@
         "section_preload": "true"
       },
       "type": "gp-section-616678350194213543"
+    },
+    "gp_section_616688585352938144": {
+      "settings": {
+        "checksum": "8193417a4635c0053dff79e700075dfdcdc4ad5c46a4d31218f574e45984261e_1_1_1_0__1",
+        "ggZ0Rv2UsaK_text": "<strong>Comprehensive Wellness Benefits</strong>"
+      },
+      "type": "gp-section-616688585352938144"
     }
   },
   "order": [
-    "gp_section_616678350194213543"
+    "gp_section_616678350194213543",
+    "gp_section_616688585352938144"
   ]
 }
