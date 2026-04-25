@@ -449,7 +449,7 @@
         ".testimonial-card__quote {font-size: 16px;}",
         ".testimonial-card__rating {font-size: 20px;}",
         ".testimonial-card__author {font-size: 16px;}",
-        ".testimonial-card__location, .testimonial-card__verified {margin: 0; font-size: 16px;}"
+        ".testimonial-card__location,.testimonial-card__verified {margin: 0; font-size: 16px;}"
       ],
       "settings": {
         "subheading": "Loved by thousands",
@@ -472,16 +472,16 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "How long until I see results?",
-            "answer": "<p>Most customers see visible results within 2–4 weeks of daily use.</p>",
+            "question": "Where do your products ship from?",
+            "answer": "<p>In true Sunny Sailor fashion, all of our products are made and shipped from the sunshine state - Florida! We ship orders from Monday through Friday by 2PM EST. If you are in the United States, we estimate you will receive your order within 3-7 business days. Orders to Alaska, Canada and outside of the United States vary on a case-by-case scenario. If you need your item(s) sooner, please select an expedited shipping option. Shipping times may vary, but please know we work our hardest to get you your order as quickly as possible. Any additional shipping costs are nonrefundable.<br/><br/></p>",
             "open_by_default": true
           }
         },
         "q2": {
           "type": "question",
           "settings": {
-            "question": "Is it safe for sensitive skin?",
-            "answer": "<p>Yes — our formula is dermatologist-tested and fragrance-free.</p>",
+            "question": "What makes your sunscreen products different from others?",
+            "answer": "<p>Our sunscreens are formulated with high-quality, certified organic ingredients to provide broad-spectrum protection from both UVA and UVB rays. We prioritize clean, non-toxic ingredients that are safe for all skin types. Sunny Sailor products are reef-safe, cruelty-free, and free from parabens, sulfates, and other harsh chemicals. Whether you need a sunscreen for daily wear or an active outdoor lifestyle, our products are designed to keep your skin protected and nourished.</p>",
             "open_by_default": false
           }
         },
@@ -496,8 +496,16 @@
         "q4": {
           "type": "question",
           "settings": {
-            "question": "Do you ship internationally?",
-            "answer": "<p>Yes, we ship to over 50 countries worldwide.</p>",
+            "question": "How often should I reapply sunscreen?",
+            "answer": "<p>For maximum protection, we recommend reapplying sunscreen every 2 hours, especially if you're sweating, swimming, or towel-drying. Our products have been tested and certified to be 80 minute water resistant. <br/></p>",
+            "open_by_default": false
+          }
+        },
+        "question_YjCYHB": {
+          "type": "question",
+          "settings": {
+            "question": "What does \"reef-safe\" sunscreen mean?",
+            "answer": "<p>\"Reef-safe\" refers to sunscreens that are formulated without certain harmful chemicals, like oxybenzone and octinoxate, which have been shown to damage coral reefs and marine life. Our reef-safe sunscreens contain non-nano zinc oxide, which provides a physical barrier against the sun without harming the environment.</p>",
             "open_by_default": false
           }
         }
@@ -506,7 +514,8 @@
         "q1",
         "q2",
         "q3",
-        "q4"
+        "q4",
+        "question_YjCYHB"
       ],
       "settings": {
         "subheading": "FAQ",
