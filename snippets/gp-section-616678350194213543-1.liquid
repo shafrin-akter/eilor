@@ -775,42 +775,58 @@
       data-keep-class="true"
       class="gsENCfp0rN gp-custom-code">
       <div>
-    <div class="container">
-        <div class="green-dot"></div>
-    </div>
+    <div class="dew-dot"></div>
     </div>
     </div>
   
       <style id="custom-css-gsENCfp0rN">
-        <style>
-    /* ডটের স্টাইল */
-    .green-dot {
-        width: 30px;
-        height: 30px;
-        background-color: #4CAF50;
-        border-radius: 50%;
-        display: inline-block;
-        
-        /* অ্যানিমেশন সেট করা */
-        animation: pulse-animation 2s infinite ease-in-out;
-    }
+        .dew-dot {
+  width: 12px;
+  height: 12px;
+  background: #22c55e; /* green */
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
 
-    /* অ্যানিমেশন লজিক */
-    @keyframes pulse-animation {
-        0% {
-            transform: scale(0.8); /* ছোট অবস্থা */
-            opacity: 1;
-        }
-        50% {
-            transform: scale(1.2); /* বড় অবস্থা */
-            opacity: 0.5;          /* হালকা হয়ে যাওয়া (নিভে যাওয়ার মতো) */
-        }
-        100% {
-            transform: scale(0.8); /* আবার ছোট অবস্থা */
-            opacity: 1;
-        }
-    }
+/* outer soft wave */
+.dew-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(34, 197, 94, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 2s infinite;
+}
 
+/* glow animation */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 14px rgba(34, 197, 94, 1);
+  }
+}
+
+/* ripple animation */
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
       </style>
     
     </div><div
@@ -922,7 +938,7 @@
       role="presentation"
       data-id="gCHw4Ua8Q-"
       style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt-mobile:4px;--ta:center"
-      class="gp-group/image gp-relative force-publish-1777119013205 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gCHw4Ua8Q-"
+      class="gp-group/image gp-relative force-publish-1777119135291 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gCHw4Ua8Q-"
     >
       <div
         
@@ -998,7 +1014,7 @@
       role="presentation"
       data-id="gB8uNth_Mr"
       style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:center"
-      class="gp-group/image gp-relative force-publish-1777119013206 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gB8uNth_Mr"
+      class="gp-group/image gp-relative force-publish-1777119135293 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gB8uNth_Mr"
     >
       <div
         
@@ -1036,7 +1052,7 @@
       role="presentation"
       data-id="goCs5TfJ4R"
       style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ml:0px;--ml-mobile:0px;--ml-tablet:0px;--ta:center"
-      class="gp-group/image gp-relative force-publish-1777119013206 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto goCs5TfJ4R"
+      class="gp-group/image gp-relative force-publish-1777119135293 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto goCs5TfJ4R"
     >
       <div
         
@@ -1074,7 +1090,7 @@
       role="presentation"
       data-id="gjfBKQmfRe"
       style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:center"
-      class="gp-group/image gp-relative force-publish-1777119013206 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gjfBKQmfRe"
+      class="gp-group/image gp-relative force-publish-1777119135294 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gjfBKQmfRe"
     >
       <div
         
