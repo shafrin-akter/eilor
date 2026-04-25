@@ -391,7 +391,7 @@
         "row-5"
       ],
       "custom_css": [
-        ".comparison-table__subheading {font-size: 16px; }"
+        ".comparison-table__subheading {font-size: 16px;}"
       ],
       "settings": {
         "subheading": "Why choose us",
@@ -440,6 +440,10 @@
         "t1",
         "t2",
         "t3"
+      ],
+      "custom_css": [
+        ".testimonials-slider__subheading {font-size: 16px;}",
+        ".testimonials-slider__header {text-align: center; margin-bottom: 2.5rem; padding: 43px;}"
       ],
       "settings": {
         "subheading": "Loved by thousands",
