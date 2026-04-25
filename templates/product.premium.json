@@ -126,7 +126,7 @@
         "share"
       ],
       "custom_css": [
-        ".product__title>* {margin: 0; font-size: 26px;}"
+        ".product__title > * {margin: 0; font-size: 26px;}"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -188,6 +188,9 @@
         "pack-1",
         "pack-2",
         "pack-3"
+      ],
+      "custom_css": [
+        ".product-bundle__option-label {margin: 0; font-weight: 600; /* font-size: 2rem; */ font-size: 16px !important;}"
       ],
       "settings": {
         "product": "eilor-hydrating-serum",
