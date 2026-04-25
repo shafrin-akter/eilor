@@ -191,7 +191,8 @@
       ],
       "custom_css": [
         ".product-bundle__option-label {margin: 0; font-weight: 600; /* font-size: 2rem; */ font-size: 16px !important;}",
-        ".product-bundle__subheading {margin: 0; color: var(--dtc-muted); font-size: 20px !important;}"
+        ".product-bundle__subheading {font-size: 20px !important;}",
+        ".product-bundle__option-description {margin: .15rem 0 0; font-size: 16px; color: var(--dtc-muted);}"
       ],
       "settings": {
         "product": "eilor-hydrating-serum",
