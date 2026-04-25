@@ -518,7 +518,7 @@
         "question_YjCYHB"
       ],
       "custom_css": [
-        ".product-faq__question {cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem .25rem; font-weight: 500; font-weight: 600;}"
+        ".product-faq__question {color: black; font-weight: 600;}"
       ],
       "settings": {
         "subheading": "FAQ",
