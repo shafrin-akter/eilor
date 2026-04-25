@@ -33,7 +33,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "square"
           }
         },
         "quantity_selector_kTdpwP": {
@@ -66,7 +66,7 @@
       "name": "t:sections.featured-product.presets.name",
       "settings": {
         "product": "eilor-hydrating-serum",
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "secondary_background": false,
         "media_size": "medium",
         "constrain_to_viewport": true,

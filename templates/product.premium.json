@@ -79,27 +79,27 @@
         "tab_ingredients": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Key ingredients",
-            "icon": "leaf",
-            "content": "<p>See the ingredients section below for details.</p>",
+            "heading": "Description",
+            "icon": "none",
+            "content": "<p>All of our products are free from harsh chemicals, parabens, synthetic fragrances, phthalates, dyes, microplastics and petrochemicals<br/><br/>Badges<br/>Our flagship product that started it all. Crafted completely from scratch and custom formulated to nourish your skin while you protect it from the sun with absolutely zero harsh chemicals. Really, truly, none. This sunscreen is truly one of a kind, liquid gold for your entire family’s skin.  <br/><br/>Captain’s Classic Clear Mineral Lotion by Sunny Sailor is made with love from Florida. The ingredients are simple, organic and naturally derived all while leaving you with no white cast, optimal absorption, and nourishment. The development was a labor of love. What started as a sunscreen for our children turned into a sunscreen for everyone –  including everything you need and nothing you don’t.  <br/><br/>Your skin will drink up this moisturizing lotion as we loaded it with organic elements like olive oil, shea butter and calendula oil to aid the zinc in natural sun protection. The best part is you can apply Captains Classic to your whole family without worrying about any harmful chemicals or preservatives being absorbed into the bloodstream as we stayed strong in our mission of making products safe for babies and made for all. </p>",
             "page": ""
           }
         },
         "tab_how_to_use": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "How to use",
-            "icon": "check_mark",
-            "content": "<p>Apply twice daily after cleansing.</p>",
+            "heading": "Full list of ingredients",
+            "icon": "none",
+            "content": "<p><strong>Zero Hidden Inactive Ingredients</strong><br/><br/>22.5% non-nano Zinc Oxide<br/>Certified Organic Chamomile<br/>Certified Organic Beeswax<br/>Certified Organic Sunflower Oil<br/>Certified Organic Sea Buckthorn<br/>Certified Organic Olive Oil<br/>Certified Organic Calendula Extract<br/>Certified Organic Jojoba<br/>Shea Butter<br/>Vitamin E<br/><br/>Organic | Cruelty-Free | Gluten-Free | GMO-Free | Reef Safe | Water Free | Fragrance Free</p><p><br/>All Sunny Sailor products are free from harsh chemicals, parabens, synthetic fragrances, phthalates, dyes, microplastics and petrochemicals.</p>",
             "page": ""
           }
         },
         "tab_shipping": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Shipping & returns",
-            "icon": "truck",
-            "content": "<p>Free shipping on orders $50+. 30-day money-back guarantee.</p>",
+            "heading": "How to use",
+            "icon": "none",
+            "content": "<p>Step 1:<br/>Clean & moisturize your skin. <br/><br/>Step 2:<br/>With clean hands, apply evenly all over your face and body from the center outwards. With our formula, a little goes a long way. <br/><br/>Step 3:<br/>Reapply every two hours of sun exposure and immediately after swimming or excessive sweating. Water resistant for up to 80 minutes. <br/></p>",
             "page": ""
           }
         },
@@ -126,7 +126,7 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
