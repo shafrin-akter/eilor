@@ -519,12 +519,12 @@
       ],
       "custom_css": [
         ".product-faq__question {color: black; font-weight: 600;}",
-        ".product-faq__subheading {font-size: 20px; }"
+        ".product-faq__subheading {font-size: 20px;}"
       ],
       "settings": {
         "subheading": "FAQ",
         "heading": "Frequently asked questions",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "faq_source": "section",
         "color_scheme": "scheme-1",
         "padding_top": 48,
