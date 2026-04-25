@@ -415,31 +415,31 @@
             "verified": true
           }
         },
-        "t2": {
+        "testimonial_MiFTC7": {
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "quote": "<p>I've tried everything — this is the only thing that actually worked.</p>",
-            "author": "Jamie L.",
-            "location": "Austin, TX",
+            "quote": "<p>This sunscreen is a dream! Super smooth, lightweight, and glides on so easily. I love that it’s packed with clean ingredients (that I can actually pronounce), which is a total must in my skincare routine these days. It kept me safe from the sun all summer and is my new go-to! Plus, the merch and branding is soo cute.<br/></p>",
+            "author": "Jeanne B",
+            "location": "New York, NY",
             "verified": true
           }
         },
-        "t3": {
+        "testimonial_itmgNW": {
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "quote": "<p>Gentle, effective, and smells amazing. Already on my third bottle!</p>",
-            "author": "Priya K.",
-            "location": "Los Angeles, CA",
+            "quote": "<p>I’ve officially become that person in the sunscreen aisle where I am scanning every single bottle with the Yuka app, hoping to find something clean… and spoiler alert - almost all of them score 20% or lower.<br/>HORRIBLE chemical ingredients. Hormone disruptors. Stuff I absolutely do not want on my body.<br/>But then I found out about Sunny Sailor.<br/>I feel so incredibly comfortable and confident using this sunscreen, knowing they are truly breaking the mold of what “clean sunscreen” is supposed to be. No harmful chemicals, no sketchy fillers. Just thoughtfully made, body-safe protection that actually aligns with a clean lifestyle.<br/><br/>This brand has marked a real turning point in the market, and I genuinely believe they’re about to blow up. Clean sunscreen has been overdue for a long time, and Sunny Sailor is it.<br/><br/>Beyond the ingredients (which matter most), the branding and merch are SO adorable.<br/><br/>I’m ecstatic to have Sunny Sailor officially in my arsenal now, knowing exactly what I’m putting on my skin. This is one of those brands you discover early and feel proud to say “I found them before everyone else.”</p>",
+            "author": "Market Disrupter!!!!",
+            "location": "New York, NY",
             "verified": true
           }
         }
       },
       "block_order": [
         "t1",
-        "t2",
-        "t3"
+        "testimonial_MiFTC7",
+        "testimonial_itmgNW"
       ],
       "custom_css": [
         ".testimonials-slider__subheading {font-size: 16px;}",
