@@ -204,7 +204,7 @@
         "mini_ingredients_label": "Metafield-Driven",
         "heading": "Choose your bundle & save",
         "subheading": "The more you buy, the more you save",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "cta_label": "Add bundle to cart",
         "show_trust_row": true,
         "trust_1": "Free shipping over $50",
