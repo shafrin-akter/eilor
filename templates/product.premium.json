@@ -190,7 +190,8 @@
         "pack-3"
       ],
       "custom_css": [
-        ".product-bundle__option-label {margin: 0; font-weight: 600; /* font-size: 2rem; */ font-size: 16px !important;}"
+        ".product-bundle__option-label {margin: 0; font-weight: 600; /* font-size: 2rem; */ font-size: 16px !important;}",
+        ".product-bundle__subheading {margin: 0; color: var(--dtc-muted); font-size: 20px !important;}"
       ],
       "settings": {
         "product": "eilor-hydrating-serum",
