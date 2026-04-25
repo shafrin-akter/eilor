@@ -121,11 +121,20 @@
         "ggXsxfKLMeF_text": "<p>Cellular Wellness Support*</p>"
       },
       "type": "gp-section-616706376399324139"
+    },
+    "gp_section_616713459907691499": {
+      "settings": {
+        "checksum": "966f293407d4f30678d94a80ff6fe943b13d63a749df99e53604e1c8c9f24a48_1_1_1_0__1",
+        "gg0TbdZJC36_text": "RESEARCH-BACKED <span style=\"color:#000000;\">WELLNESS SUPPORT*</span>",
+        "ggNuCqu3VOr_text": "<p><span style=\"background-color:rgb(251,249,247);color:rgb(43,43,43);\">Rovina Astaxanthin works at the cellular level to support comprehensive wellness—helping you look better, feel better, and function better in everyday life.*</span></p>"
+      },
+      "type": "gp-section-616713459907691499"
     }
   },
   "order": [
     "gp_section_616678350194213543",
     "gp_section_616688585352938144",
-    "gp_section_616706376399324139"
+    "gp_section_616706376399324139",
+    "gp_section_616713459907691499"
   ]
 }
