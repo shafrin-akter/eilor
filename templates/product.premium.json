@@ -390,6 +390,9 @@
         "row-4",
         "row-5"
       ],
+      "custom_css": [
+        ".comparison-table__subheading {font-size: 16px; }"
+      ],
       "settings": {
         "subheading": "Why choose us",
         "heading": "See the difference",
