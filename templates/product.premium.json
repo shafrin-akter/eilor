@@ -518,7 +518,8 @@
         "question_YjCYHB"
       ],
       "custom_css": [
-        ".product-faq__question {color: black; font-weight: 600;}"
+        ".product-faq__question {color: black; font-weight: 600;}",
+        ".product-faq__subheading {font-size: 20px; }"
       ],
       "settings": {
         "subheading": "FAQ",
