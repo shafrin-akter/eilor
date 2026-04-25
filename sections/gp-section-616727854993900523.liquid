@@ -32,7 +32,9 @@
       data-keep-class="true"
       class="gIpsF3gCBi gp-custom-code">
       <div>
-    <section class="timeline-section">
+    <div class="spacer">scroll down</div>
+
+<section class="timeline-section">
   <div class="timeline-wrap">
     <div class="timeline-image">
       <img src="https://cdn.shopify.com/s/files/1/0824/3976/6260/files/maditation.webp?v=1777130068" alt="Astaxanthin" />
@@ -101,11 +103,13 @@
     </div>
   </div>
 </section>
+
+<div class="spacer">end</div>
     </div>
     </div>
   
       <style id="custom-css-gIpsF3gCBi">
-          * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --accent: #8b1e2d;
@@ -195,7 +199,7 @@
     width: 2px;
     background: var(--accent);
     height: 0;
-    transition: height 0.15s linear;
+    transition: height 0.45s ease;
     z-index: 1;
   }
 
@@ -296,7 +300,8 @@
     
       <script id="custom-js-gIpsF3gCBi">
         try {
-          (function () {
+          <script>
+  (function () {
     var timeline = document.getElementById('timeline');
     var progress = document.getElementById('progress');
     var steps = Array.prototype.slice.call(timeline.querySelectorAll('.step'));
@@ -305,28 +310,29 @@
     function update() {
       var tlRect = timeline.getBoundingClientRect();
       var triggerY = window.innerHeight * 0.55;
-
       var lineTop = tlRect.top + 20;
-      var lineBottom = tlRect.bottom - 20;
-      var lineHeight = lineBottom - lineTop;
 
-      var filled = triggerY - lineTop;
-      if (filled < 0) filled = 0;
-      if (filled > lineHeight) filled = lineHeight;
-      progress.style.height = filled + 'px';
-
+      var lastActiveCenter = lineTop;
       steps.forEach(function (step, i) {
         var r = icons[i].getBoundingClientRect();
         var center = r.top + r.height / 2;
-        if (center <= triggerY) step.classList.add('active');
-        else step.classList.remove('active');
+        if (center <= triggerY) {
+          step.classList.add('active');
+          lastActiveCenter = center;
+        } else {
+          step.classList.remove('active');
+        }
       });
+
+      progress.style.height = (lastActiveCenter - lineTop) + 'px';
     }
 
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
   })();
+</script>
+
         } catch(err){}
       </script>
     
