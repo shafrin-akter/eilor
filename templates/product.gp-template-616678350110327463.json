@@ -132,9 +132,11 @@
     },
     "gp_section_616714264660411040": {
       "settings": {
-        "checksum": "7ba626c3b984fcd36de50fd368f751ec40717604becd978658e31b8e4fe39aba_1_1_1_0__1",
-        "ggJoubWTp_k_text": "<p>Gluten-Free</p>",
-        "ggQ4ZGPpb_W_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0824/3976/6260/files/Group_1000006457_1_897fcde4-b810-44cb-947b-b7d3ba6556f7.svg"
+        "checksum": "c359ea10bade68ff2717e5e7badf9525601ae7ac491c773355430cf9d10b8b14_1_1_1_0__1",
+        "ggJoubWTp_k_text": "<p>&nbsp;Non-GMO</p>",
+        "ggQ4ZGPpb_W_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0824/3976/6260/files/NON_GMO.png",
+        "ggTSJuNgp-0_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0824/3976/6260/files/No_color.png",
+        "ggiZ9G0L8g6_text": "<p>No additives</p>"
       },
       "type": "gp-section-616714264660411040"
     }
