@@ -32,12 +32,10 @@
       data-keep-class="true"
       class="gIpsF3gCBi gp-custom-code">
       <div>
-    <div class="spacer">scroll down</div>
-
-<section class="timeline-section">
+    <section class="timeline-section">
   <div class="timeline-wrap">
     <div class="timeline-image">
-      <img src="https://cdn.shopify.com/s/files/1/0824/3976/6260/files/maditation.webp?v=1777130068" alt="Astaxanthin" />
+      <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=900&q=80" alt="Astaxanthin" />
     </div>
 
     <div class="timeline" id="timeline">
@@ -103,8 +101,6 @@
     </div>
   </div>
 </section>
-
-<div class="spacer">end</div>
     </div>
     </div>
   
@@ -176,31 +172,32 @@
   }
 
   .timeline {
-    position: relative;
+    position: relative !important;
     padding-left: 60px;
   }
 
   /* The full vertical line (background / inactive) */
   .timeline::before {
     content: '';
-    position: absolute;
-    left: 19px;
+    position: absolute !important;
+    left: 19px !important;
     top: 20px;
     bottom: 20px;
-    width: 2px;
+    width: 2px !important;
     background: #d9d2c8;
   }
 
   /* The progressing colored line — height controlled by JS */
   .timeline-progress {
-    position: absolute;
-    left: 19px;
-    top: 20px;
-    width: 2px;
+    position: absolute !important;
+    left: 19px !important;
+    top: 20px !important;
+    width: 2px !important;
     background: var(--accent);
     height: 0;
     transition: height 0.45s ease;
     z-index: 1;
+    display: block !important;
   }
 
   .step {
@@ -300,8 +297,7 @@
     
       <script id="custom-js-gIpsF3gCBi">
         try {
-          
-  (function () {
+           (function () {
     var timeline = document.getElementById('timeline');
     var progress = document.getElementById('progress');
     var steps = Array.prototype.slice.call(timeline.querySelectorAll('.step'));
@@ -327,12 +323,12 @@
       progress.style.height = (lastActiveCenter - lineTop) + 'px';
     }
 
+    // capture phase + document = catches scroll from any scrollable ancestor too
+    document.addEventListener('scroll', update, { passive: true, capture: true });
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
   })();
-
-
         } catch(err){}
       </script>
     
