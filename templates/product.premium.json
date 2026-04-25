@@ -416,6 +416,16 @@
             "verified": true
           }
         },
+        "testimonial_PA3yGz": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "<p>as a native south Floridian I have put my skin through a lot of sun damage...mainly because most sunblocks are awful. the days of harmful rays are over for me thanks to this product. I dont leave the house (or state, or country) without it!</p>",
+            "author": "Wesley",
+            "location": "New York, NY",
+            "verified": true
+          }
+        },
         "testimonial_MiFTC7": {
           "type": "testimonial",
           "disabled": true,
@@ -441,6 +451,7 @@
       },
       "block_order": [
         "t1",
+        "testimonial_PA3yGz",
         "testimonial_MiFTC7",
         "testimonial_itmgNW"
       ],
