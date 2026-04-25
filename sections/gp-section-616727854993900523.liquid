@@ -43,7 +43,7 @@
 
       <div class="step">
         <div class="step-icon">
-          <svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 14.5 16 9.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="step-week">Weeks 1–2</div>
         <h3 class="step-title">Cellular Foundation</h3>
@@ -57,7 +57,7 @@
 
       <div class="step">
         <div class="step-icon">
-          <svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 14.5 16 9.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="step-week">Week 3–4</div>
         <h3 class="step-title">Early Changes Appear</h3>
@@ -72,7 +72,7 @@
 
       <div class="step">
         <div class="step-icon">
-          <svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 14.5 16 9.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="step-week">Week 5–8</div>
         <h3 class="step-title">Building Momentum</h3>
@@ -86,7 +86,7 @@
 
       <div class="step">
         <div class="step-icon">
-          <svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 14.5 16 9.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="step-week">Week 8+</div>
         <h3 class="step-title">Long-Term Support</h3>
@@ -105,7 +105,7 @@
     </div>
   
       <style id="custom-css-gIpsF3gCBi">
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+         * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --accent: #8b1e2d;
@@ -223,16 +223,21 @@
   }
 
   .step-icon svg {
-    width: 18px;
-    height: 18px;
-    stroke: #fff;
-    stroke-width: 3;
+    width: 26px;
+    height: 26px;
+    stroke: #b8b1a4;
+    stroke-width: 2;
     fill: none;
+    transition: stroke 0.4s ease;
   }
 
   .step.active .step-icon {
     background: var(--accent);
     box-shadow: 0 4px 14px rgba(139, 30, 45, 0.25);
+  }
+
+  .step.active .step-icon svg {
+    stroke: #fff;
   }
 
   .step-week {
@@ -297,7 +302,7 @@
     
       <script id="custom-js-gIpsF3gCBi">
         try {
-          (function () {
+            (function () {
     var timeline = document.getElementById('timeline');
     var progress = document.getElementById('progress');
     var steps = Array.prototype.slice.call(timeline.querySelectorAll('.step'));
