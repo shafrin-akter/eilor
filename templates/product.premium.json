@@ -266,7 +266,8 @@
         "i4"
       ],
       "custom_css": [
-        ".icon-text-grid__subheading {font-size: 16px;}"
+        ".icon-text-grid__subheading {font-size: 16px;}",
+        ".icon-text-grid__title {font-size: 18px; }"
       ],
       "settings": {
         "subheading": "Why you'll love it",
