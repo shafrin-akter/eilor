@@ -782,68 +782,35 @@
     </div>
   
       <style id="custom-css-gsENCfp0rN">
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5; /* হালকা ব্যাকগ্রাউন্ড */
-        }
+        <style>
+    /* ডটের স্টাইল */
+    .green-dot {
+        width: 30px;
+        height: 30px;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        display: inline-block;
+        
+        /* অ্যানিমেশন সেট করা */
+        animation: pulse-animation 2s infinite ease-in-out;
+    }
 
-        /* এটি হলো ছবির মত কন্টেইনার */
-        .container {
-            width: 150px;
-            height: 150px;
-            background-color: white; /* কন্টেইনারের ব্যাকগ্রাউন্ড */
-            border-bottom: 25px solid #3b82f6; /* নিচের নীল বর্ডারটি */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* হালকা ছায়া */
-            border-radius: 8px; /* কোণাগুলো সামান্য গোল */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative; /* ভিতরের এলিমেন্টগুলোর পজিশনিংয়ের জন্য */
+    /* অ্যানিমেশন লজিক */
+    @keyframes pulse-animation {
+        0% {
+            transform: scale(0.8); /* ছোট অবস্থা */
+            opacity: 1;
         }
+        50% {
+            transform: scale(1.2); /* বড় অবস্থা */
+            opacity: 0.5;          /* হালকা হয়ে যাওয়া (নিভে যাওয়ার মতো) */
+        }
+        100% {
+            transform: scale(0.8); /* আবার ছোট অবস্থা */
+            opacity: 1;
+        }
+    }
 
-        /* এটি হলো সেই গ্রিন ডট */
-        .green-dot {
-            width: 30px; /* ডটের আসল আকার */
-            height: 30px;
-            background-color: #4CAF50; /* গ্রিন কালার */
-            border-radius: 50%; /* পুরোপুরি গোল করার জন্য */
-            position: relative;
-        }
-
-        /* এটি হলো 'পালসিং' (Pulsing) বা 'জ্বলন্ত' এফেক্ট */
-        .green-dot::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: #4CAF50;
-            opacity: 0.8; /* শুরুতে সামান্য স্বচ্ছ */
-            animation: pulsate 1.8s infinite ease-out; /* অ্যানিমেশন চালু */
-        }
-
-        /* এই অ্যানিমেশনটি ডটকে ছোট-বড় এবং জ্বলন্ত-নিভন্ত এফেক্ট দেয় */
-        @keyframes pulsate {
-            0% {
-                transform: scale(0.6); /* শুরুতে ছোট */
-                opacity: 0.9;         /* বেশি দৃশ্যমান (জ্বলন্ত) */
-            }
-            50% {
-                transform: scale(1.6); /* মাঝে বড় হবে */
-                opacity: 0;           /* পুরোপুরি স্বচ্ছ (নিভে যাওয়া) */
-            }
-            100% {
-                transform: scale(0.6); /* আবার ছোট হয়ে ফিরে আসবে */
-                opacity: 0.9;         /* আবার জ্বলন্ত */
-            }
-        }
       </style>
     
     </div><div
@@ -955,7 +922,7 @@
       role="presentation"
       data-id="gCHw4Ua8Q-"
       style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt-mobile:4px;--ta:center"
-      class="gp-group/image gp-relative force-publish-1777118914435 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gCHw4Ua8Q-"
+      class="gp-group/image gp-relative force-publish-1777119013205 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gCHw4Ua8Q-"
     >
       <div
         
@@ -1031,7 +998,7 @@
       role="presentation"
       data-id="gB8uNth_Mr"
       style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:center"
-      class="gp-group/image gp-relative force-publish-1777118914437 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gB8uNth_Mr"
+      class="gp-group/image gp-relative force-publish-1777119013206 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gB8uNth_Mr"
     >
       <div
         
@@ -1069,7 +1036,7 @@
       role="presentation"
       data-id="goCs5TfJ4R"
       style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ml:0px;--ml-mobile:0px;--ml-tablet:0px;--ta:center"
-      class="gp-group/image gp-relative force-publish-1777118914437 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto goCs5TfJ4R"
+      class="gp-group/image gp-relative force-publish-1777119013206 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto goCs5TfJ4R"
     >
       <div
         
@@ -1107,7 +1074,7 @@
       role="presentation"
       data-id="gjfBKQmfRe"
       style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:center"
-      class="gp-group/image gp-relative force-publish-1777118914438 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gjfBKQmfRe"
+      class="gp-group/image gp-relative force-publish-1777119013206 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gjfBKQmfRe"
     >
       <div
         
